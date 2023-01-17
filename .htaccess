@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteBase /Lyrics_Songs/
+RewriteRule ^([a-zA-Z0-9]+)$ index.php?pages=$1
