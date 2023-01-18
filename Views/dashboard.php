@@ -634,7 +634,7 @@ require_once 'CRUDS/update.php';
     <!--END CONTENT -->
 
 
-    <!-- BEGIN Main modal -->
+    <!-- BEGIN Main modal artist -->
     <div id="defaultModal" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
             <!-- Modal content -->
@@ -715,7 +715,7 @@ require_once 'CRUDS/update.php';
             </div>
         </div>
     </div>
-    <!-- END Main modal -->
+    <!-- END Main modal artist-->
 
     <!-- BEGIN Modal delete -->
     <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">

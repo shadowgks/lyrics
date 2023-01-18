@@ -21,7 +21,7 @@ const inputs_form_id = document.querySelector('#inputs_form_id');
 const anotherdiv = document.querySelector('#anotherdiv');
 const btn_close_all = document.querySelectorAll('.close');
 
-//Select Element Modal
+//Select Element div inputs Modal
 const name_form_modal = document.querySelector('#name');
 const date_birthday_form_modal = document.querySelector('#birthday_date');
 const date_release_form_modal = document.querySelector('#release_date');
@@ -30,16 +30,15 @@ const cat_form_modal = document.querySelector('#categorie');
 const artist_form_modal = document.querySelector('#artist');
 const descriprion_form_modal = document.querySelector('#descriprion');
 
-// const names_inpute = document.querySelectorAll('.input_names');
-let input_names = document.querySelector('.input_names');
+const input_names = document.querySelector('.input_names');
 
-let input_pictures = document.querySelector('.input_pictures');
-console.log(input_pictures);
-let select_categories = document.querySelector('.select_categories');
-let select_artists = document.querySelector('.select_artists');
-let input_release_date = document.querySelector('.input_release_date');
-let input_birthday_date = document.querySelector('.input_birthday_date');
-let input_description = document.querySelector('.input_description');
+//Select inputs Element 
+const input_pictures = document.querySelector('.input_pictures');
+const select_categories = document.querySelector('.select_categories');
+const select_artists = document.querySelector('.select_artists');
+const input_release_date = document.querySelector('.input_release_date');
+const input_birthday_date = document.querySelector('.input_birthday_date');
+const input_description = document.querySelector('.input_description');
 
 
 //Function show & hide inputs forms
@@ -100,7 +99,6 @@ function GenersShowHide(){
     btn_create.setAttribute('name','add_gener');
     btn_update.setAttribute('name','update_gener');
     //inputs set required
-    console.log(select_categories);
     input_names.setAttribute('required','');
 
   //hide
@@ -199,10 +197,10 @@ btn_close_all.forEach((item1)=>{
   item1.addEventListener('click',()=>{
     //loop all div is clone the form
       inputs_form_all_class.forEach((item,count)=>{
-        if(count!=0){
+        
           item.remove();
           // index=0;
-        }
+        
     });
   })
 });
