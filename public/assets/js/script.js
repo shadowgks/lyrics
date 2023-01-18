@@ -31,13 +31,15 @@ const artist_form_modal = document.querySelector('#artist');
 const descriprion_form_modal = document.querySelector('#descriprion');
 
 // const names_inpute = document.querySelectorAll('.input_names');
-const input_names = document.querySelector('.input_names');
-const input_pictures = document.querySelector('.input_pictures');
-const select_categories = document.querySelector('.select_categories');
-const select_artists = document.querySelector('.select_artists');
-const input_release_date = document.querySelector('.input_release_date');
-const input_birthday_date = document.querySelector('.input_birthday_date');
-const input_description = document.querySelector('.input_description');
+let input_names = document.querySelector('.input_names');
+
+let input_pictures = document.querySelector('.input_pictures');
+console.log(input_pictures);
+let select_categories = document.querySelector('.select_categories');
+let select_artists = document.querySelector('.select_artists');
+let input_release_date = document.querySelector('.input_release_date');
+let input_birthday_date = document.querySelector('.input_birthday_date');
+let input_description = document.querySelector('.input_description');
 
 
 //Function show & hide inputs forms
@@ -98,6 +100,7 @@ function GenersShowHide(){
     btn_create.setAttribute('name','add_gener');
     btn_update.setAttribute('name','update_gener');
     //inputs set required
+    console.log(select_categories);
     input_names.setAttribute('required','');
 
   //hide
@@ -108,7 +111,7 @@ function GenersShowHide(){
     artist_form_modal.style.display = "none";
     descriprion_form_modal.style.display = "none";
     //inputs remove required
-    input_pictures.removeAttribute('required');
+    
     select_categories.removeAttribute('required');
     select_artists.removeAttribute('required');
     input_release_date.removeAttribute('required');
