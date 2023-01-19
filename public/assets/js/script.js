@@ -9,7 +9,7 @@ $(document).ready(function() {
 //Dashboard TABLES
 //=====================================================================
 //Form 1 Select
-const form1 = document.forms['form1'];
+// const form1 = document.forms['form1'];
 
 //select Element fron dashboard
 // const btn_add_show_modal = document.querySelectorAll('.add_show_modal');
@@ -206,14 +206,22 @@ const form1 = document.forms['form1'];
 // });
 
 //++++++++++++++++++++++++++++++
-//Select Element icon btn edit
-const icon_btn_edite_artists = document.querySelector('#btn_edit_artists');
-const icon_btn_edite_songs = document.querySelector('#btn_edit_songs');
-const icon_btn_edite_categories = document.querySelector('#btn_edit_categories');
-//Select Element btn show modal
-const btn_show_artist_add = document.querySelector('#btn_artist_add');
-const btn_show_song_add = document.querySelector('#btn_song_add');
-const btn_show_categorie_add = document.querySelector('#btn_categorie_add');
+//Select Element 
+// icon btn edit
+const icon_btn_edit_artists = document.querySelector('#btn_edit_artists');
+const icon_btn_edit_songs = document.querySelector('#btn_edit_songs');
+const icon_btn_edit_categories = document.querySelector('#btn_edit_categories');
+// btn show modal
+const btn_show_artists_add = document.querySelector('#btn_artist_add');
+const btn_show_songs_add = document.querySelector('#btn_song_add');
+const btn_show_categories_add = document.querySelector('#btn_categorie_add');
+//btn close
+const btn_close_all = document.querySelectorAll('.close');
+
+//Forms
+const form_artists = document.forms['form_artists'];
+const form_songs = document.forms['form_songs'];
+const form_categores = document.forms['form_categories'];
 
 //==========================================================================
 //Select Element btn Modal
@@ -223,29 +231,92 @@ const add_artist = document.querySelector('#add_artist');
 const update_artist = document.querySelector('#update_artist');
 //Duplicate Div the FORM
 let nodes_artist = document.querySelector('.nodes_artist');
-let div_to_coller = document.querySelector('.anotherdiv_artists');
+let div_to_coller_artist = document.createElement('div');
+div_to_coller_artist.setAttribute('class','anotherdiv_artists');
 add_artist.addEventListener('click',()=>{
-  div_to_coller.append(nodes_artist.cloneNode(true));
+    div_to_coller_artist.append(nodes_artist.cloneNode(true));
 });
+
+//___
 //Songs btn form
 const add_song = document.querySelector('#add_song');
 const save_song = document.querySelector('#save_song');
 const update_song = document.querySelector('#update_song');
+//Duplicate Div the FORM
+let div_to_coller_song = document.querySelector('.anotherdiv_songs');
+let nodes_song = document.querySelector('.nodes_song');
+// let div_song = document.createElement('div');
+// div_song.setAttribute('class','div_songs');
+add_song.addEventListener('click',()=>{
+  // div_to_coller_song.append(div_song);
+  div_to_coller_song.append(nodes_song.cloneNode(true));
+});
+
+//___
 //Categores btn form
 const add_categorie = document.querySelector('#add_categorie');
 const save_categorie = document.querySelector('#save_categorie');
 const update_categorie = document.querySelector('#update_categorie');
-
+//Duplicate Div the FORM
+let div_to_coller_categorie = document.querySelector('.anotherdiv_categories');
+let nodes_categorie = document.querySelector('.nodes_categorie');
+// let div_categorie = document.createElement('div');
+// div_categorie.setAttribute('class','div_categorie');
+add_categorie.addEventListener('click',()=>{
+  // div_to_coller_categorie.append(div_categorie);
+  div_to_coller_categorie.append(nodes_categorie.cloneNode(true));
+});
 //============================
 // show and hidden btn modal
-btn_show_artist_add.addEventListener('click',()=>{
+btn_show_artists_add.addEventListener('click',()=>{
+  add_artist.style.display = "block";
   save_artist.style.display = "block";
   update_artist.style.display = "none";
 });
-icon_btn_edite_artists.addEventListener('click',()=>{
+icon_btn_edit_artists.addEventListener('click',()=>{
   update_artist.style.display = "block";
   save_artist.style.display = "none";
   add_artist.style.display = "none";
 })
 
+//___
+// show and hidden btn modal
+btn_show_songs_add.addEventListener('click',()=>{
+  add_song.style.display = "block";
+  save_song.style.display = "block";
+  update_song.style.display = "none";
+});
+icon_btn_edit_songs.addEventListener('click',()=>{
+  update_song.style.display = "block";
+  save_song.style.display = "none";
+  add_song.style.display = "none";
+})
 
+//___
+// show and hidden btn modal
+btn_show_categories_add.addEventListener('click',()=>{
+  add_categorie.style.display = "block";
+  save_categorie.style.display = "block";
+  update_categorie.style.display = "none";
+});
+icon_btn_edit_categories.addEventListener('click',()=>{
+  update_categorie.style.display = "block";
+  save_categorie.style.display = "none";
+  add_categorie.style.display = "none";
+})
+
+//__
+//loop remove inputs if clicked close
+btn_close_all.forEach((item)=>{
+  item.addEventListener('click',()=>{
+    // // div_to_coller_categorie.remove();
+    // // div_artist.remove();
+    // // div_song.remove();
+    // // div_categorie.remove();
+    // console.log(div_song_ready);
+    // // div_song_ready.forEach((s)=>{
+      
+    // // })
+    // nodes_artist.parentNode.removeChild(div_to_coller_artist);
+  })
+});

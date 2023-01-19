@@ -633,7 +633,7 @@ require_once 'CRUDS/update.php';
     <!--END CONTENT -->
 
 
-    <!-- BEGIN Main modal artist -->
+    <!-- BEGIN Main modal artists -->
     <div id="defaultModal1" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
             <!-- Modal content -->
@@ -651,7 +651,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="" method="post" enctype="multipart/form-data">
+                <form method="post" name="form_artists" enctype="multipart/form-data">
                     <div class="nodes_artist grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -668,9 +668,7 @@ require_once 'CRUDS/update.php';
                         <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
                     </div>
 
-                    <div class="anotherdiv_artists">
-                        <!-- Duplcate here!!!! -->
-                    </div>
+                   
                     <!-- btns -->
                     <div class="flex gap-3">
                         <button type="button" id="add_artist" name="add_artist" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
@@ -692,7 +690,7 @@ require_once 'CRUDS/update.php';
         </div>
     </div>
     <!-- END Main modal Song-->
-    <!-- BEGIN Main modal artist -->
+    <!-- BEGIN Main modal songs -->
     <div id="defaultModal2" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
             <!-- Modal content -->
@@ -710,7 +708,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" name="form_songs" enctype="multipart/form-data">
                     <div class="nodes_song grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -745,7 +743,8 @@ require_once 'CRUDS/update.php';
                         <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
                     </div>
 
-                    <div id="anotherdiv_songs">
+                    <div class="anotherdiv_songs">
+                        
                         <!-- Duplcate here!!!! -->
                     </div>
                     <!-- btns -->
@@ -770,7 +769,7 @@ require_once 'CRUDS/update.php';
         </div>
     </div>
     <!-- END Main modal Song-->
-    <!-- BEGIN Main modal categorie -->
+    <!-- BEGIN Main modal categories -->
     <div id="defaultModal3" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
             <!-- Modal content -->
@@ -788,7 +787,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" name="form_categories" enctype="multipart/form-data">
                     <div class="nodes_categorie grid gap-4 mb-4 sm:grid-cols-2" id="inputs_form_id">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -797,7 +796,8 @@ require_once 'CRUDS/update.php';
                         <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
                     </div>
 
-                    <div id="anotherdiv_categories">
+                    <div class="anotherdiv_categories">
+                       
                         <!-- Duplcate here!!!! -->
                     </div>
                     <!-- btns -->
