@@ -543,24 +543,26 @@ require_once 'CRUDS/update.php';
                                 <th data-priority="3">release date</th>
                                 <th data-priority="4">lyrics</th>
                                 <th data-priority="5">Artist</th>
-                                <th data-priority="6">Actions</th>
+                                <th data-priority="6">Album</th>
+                                <th data-priority="7">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $idS = 1;
-                            foreach ($data_songs as $song) {
-                                echo '<input type="hidden" value="' . $song['id'] . '">
+                            foreach ($data_songs as $item) {
+                                echo '<input type="hidden" value="' . $item['id'] . '">
                                 <tr>
                                 <td>
                                     ' . $idS . '
                                 </td>
                                 <td class="md:flex items-center">
-                                    <img class="w-12 h-12 rounded-full" src="public/assets/imgs/songs/adele_hello.jpg" alt="#"> <span class="ml-2">' . $song['name'] . '</span>
+                                    <img class="w-12 h-12 rounded-full" src="public/assets/imgs/songs/adele_hello.jpg" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
                                 </td>
-                                <td>' . $song['release_date'] . '</td>
-                                <td>' . $song['lyrics'] . '</td>
-                                <td>' . $song['name_artist'] . '</td>
+                                <td>' . $item['release_date'] . '</td>
+                                <td>' . $item['lyrics'] . '</td>
+                                <td>' . $item['name_artist'] . '</td>
+                                <td>' . $item['name_album'] . '</td>
                                 <td>
                                     <button type="button" data-modal-toggle="defaultModal2" id="btn_edit_songs"
                                         class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
@@ -604,12 +606,12 @@ require_once 'CRUDS/update.php';
                         </thead>
                         <tbody>
                             <?php
-                            $idG = 1;
-                            foreach ($data_geners as $gener) {
-                                echo '<input type="hidden" value="' . $gener['id'] . '">
+                            $idC = 1;
+                            foreach ($data_categories as $item) {
+                                echo '<input type="hidden" value="' . $item['id'] . '">
                                 <tr>
-                                <td>' . $idG . '</td>
-                                <td>' . $gener['name'] . '</td>
+                                <td>' . $idC . '</td>
+                                <td>' . $item['name'] . '</td>
                                 <td>
                                     <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories"
                                         class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
@@ -619,7 +621,55 @@ require_once 'CRUDS/update.php';
                                         class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>';
-                                $idG++;
+                                $idC++;
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!--E DATATABLE -->
+            </div>
+            <!-- albums -->
+            <div class="my-10">
+                <div class="lg:text-end lg:block grid">
+                    <div>
+                        <h1 class="mb-4 text-4xl font-extrabold text-gray-900 md:text-4xl lg:text-5xl dark:text-white text-center md:text-start">
+                            ALBUMS
+                        </h1>
+                        <hr class="w-48 h-1 my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-orange-500 m-auto md:m-0" />
+                    </div>
+                    <button type="button" data-modal-toggle="defaultModal4" id="btn_albums_add" class="add_show_modal text-center text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 dark:shadow-lg dark:shadow-orange-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                        ADD ALBUMS
+                    </button>
+                </div>
+                <!--B DATATABLE -->
+                <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                    <table id="example4" class="stripe hover" style="width: 100%; padding-top: 1em; padding-bottom: 1em">
+                        <thead>
+                            <tr class="uppercase">
+                                <th data-priority="1">id</th>
+                                <th data-priority="2">albums</th>
+                                <th data-priority="3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $idAlbum = 1;
+                            foreach ($data_albums as $item) {
+                                echo '<input type="hidden" value="' . $item['id'] . '">
+                                <tr>
+                                <td>' . $idAlbum . '</td>
+                                <td>' . $item['name'] . '</td>
+                                <td>
+                                    <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_albums"
+                                        class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                            class="fa-solid fa-pen-to-square"></i></button>
+                                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                        class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>';
+                                $idAlbum++;
                             }
                             ?>
                         </tbody>
@@ -651,7 +701,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="post" name="form_artists" enctype="multipart/form-data">
+                <form action="Views\CRUDS\add.php" method="post" name="form_artists" enctype="multipart/form-data">
                     <div class="nodes_artist grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -667,8 +717,9 @@ require_once 'CRUDS/update.php';
                         </div>
                         <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
                     </div>
+                    <div class="div_artists">
 
-                   
+                    </div>
                     <!-- btns -->
                     <div class="flex gap-3">
                         <button type="button" id="add_artist" name="add_artist" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
@@ -708,7 +759,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="post" name="form_songs" enctype="multipart/form-data">
+                <form action="" method="post" name="form_songs" enctype="multipart/form-data">
                     <div class="nodes_song grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -721,14 +772,21 @@ require_once 'CRUDS/update.php';
                         <div>
                             <label for="categorie" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorie</label>
                             <select name="categorie[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="" disabled>Select categorie</option>
+                                <option selected="" disabled>Select categories</option>
                                 <option value="">Stay</option>
                             </select>
                         </div>
                         <div>
                             <label for="artist" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
                             <select name="artist[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="" disabled>Select artist</option>
+                                <option selected="" disabled>Select artists</option>
+                                <option value="">Stay</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="album" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
+                            <select name="album[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option selected="" disabled>Select albums</option>
                                 <option value="">Stay</option>
                             </select>
                         </div>
@@ -743,9 +801,8 @@ require_once 'CRUDS/update.php';
                         <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
                     </div>
 
-                    <div class="anotherdiv_songs">
-                        
-                        <!-- Duplcate here!!!! -->
+                    <div class="div_songs">
+
                     </div>
                     <!-- btns -->
                     <div class="flex gap-3">
@@ -787,7 +844,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="post" name="form_categories" enctype="multipart/form-data">
+                <form action="" method="post" name="form_categories" enctype="multipart/form-data">
                     <div class="nodes_categorie grid gap-4 mb-4 sm:grid-cols-2" id="inputs_form_id">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -796,31 +853,86 @@ require_once 'CRUDS/update.php';
                         <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
                     </div>
 
-                    <div class="anotherdiv_categories">
-                       
+                    <div class="div_categories">
+
                         <!-- Duplcate here!!!! -->
                     </div>
                     <!-- btns -->
                     <div class="flex gap-3">
-                        <button type="button" id="add_categorie" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="button" id="add_categorie" name="add_categorie" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-plus mr-2"></i>
                             Add
                         </button>
-                        <button type="submit" id="save_categorie" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button type="submit" id="save_categorie" name="save_categorie" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <i class="fa-solid fa-paper-plane mr-2"></i>
                             Save
                         </button>
-                        <button type="submit" id="update_categorie" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="submit" id="update_categorie" name="update_categorie" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-pen-to-square mr-2"></i>
                             Update
                         </button>
                         <button data-modal-toggle="defaultModal3" type="button" class="close text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <!-- END Main modal categories-->
+    <!-- BEGIN Main modal albums -->
+    <div id="defaultModal4" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+        <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+            <!-- Modal content -->
+            <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 overflow-auto h-screen">
+                <!-- Modal header -->
+                <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Add
+                    </h3>
+                    <button type="button" class="close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal4">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <form action="" method="post" name="form_albums" enctype="multipart/form-data">
+                    <div class="nodes_album grid gap-4 mb-4 sm:grid-cols-2" id="inputs_form_id">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                            <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
+                        </div>
+                        <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
+                    </div>
+
+                    <div class="div_albums">
+
+                        <!-- Duplcate here!!!! -->
+                    </div>
+                    <!-- btns -->
+                    <div class="flex gap-3">
+                        <button type="button" id="add_album" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                            <i class="fa-solid fa-plus mr-2"></i>
+                            Add
+                        </button>
+                        <button type="submit" id="save_album" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <i class="fa-solid fa-paper-plane mr-2"></i>
+                            Save
+                        </button>
+                        <button type="submit" id="update_album" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                            <i class="fa-solid fa-pen-to-square mr-2"></i>
+                            Update
+                        </button>
+                        <button data-modal-toggle="defaultModal4" type="button" class="close text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                    </div>
+                </form>
 
             </div>
         </div>
     </div>
+    <!-- END Main modal albums-->
+
+
 
     <!-- BEGIN Modal delete -->
     <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">

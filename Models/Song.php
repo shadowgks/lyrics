@@ -8,10 +8,12 @@ class Song
         $stm = db::connectDB()->prepare("SELECT songs.*,
         artists.name AS 'name_artist',
         categories.name AS 'name_categorie',
+        albums.name as 'name_album',
         admins.firstName, admins.lastName
-        FROM songs join artists join categories join admins
+        FROM songs join artists join categories join admins join albums
         on songs.id_artist = artists.id 
         and songs.id_cat = categories.id
+        and songs.id_album = albums.id
         and songs.id_admin = admins.id;");
         $stm->execute();
         return $stm->fetchAll();

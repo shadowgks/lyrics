@@ -1,22 +1,20 @@
 <?php
 
-class CategorieController
+class AlbumController
 {
-    function getAllCategorie()
+    function getAllAlbums()
     {
-        $data_categorie = Categorie::getAll();
-        return $data_categorie;
+        $data_albums = Album::getAll();
+        return $data_albums;
     }
     //create
-    function addCategorie()
+    function addAlbum()
     {
-        if (isset($_POST['save_categorie'])) {
+        if (isset($_POST['add_categorie'])) {
 
             $data = array(
                 'name_categorie' => $_POST['name'],
             );
-
-  
 
             $add = Categorie::add($data);
             if ($add === true) {

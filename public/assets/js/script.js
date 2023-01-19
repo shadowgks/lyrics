@@ -206,15 +206,18 @@ $(document).ready(function() {
 // });
 
 //++++++++++++++++++++++++++++++
+//Optimaze Modal form
 //Select Element 
 // icon btn edit
 const icon_btn_edit_artists = document.querySelector('#btn_edit_artists');
 const icon_btn_edit_songs = document.querySelector('#btn_edit_songs');
 const icon_btn_edit_categories = document.querySelector('#btn_edit_categories');
+const icon_btn_edit_albums = document.querySelector('#btn_edit_albums');
 // btn show modal
 const btn_show_artists_add = document.querySelector('#btn_artist_add');
 const btn_show_songs_add = document.querySelector('#btn_song_add');
 const btn_show_categories_add = document.querySelector('#btn_categorie_add');
+const btn_show_albums_add = document.querySelector('#btn_albums_add');
 //btn close
 const btn_close_all = document.querySelectorAll('.close');
 
@@ -222,6 +225,16 @@ const btn_close_all = document.querySelectorAll('.close');
 const form_artists = document.forms['form_artists'];
 const form_songs = document.forms['form_songs'];
 const form_categores = document.forms['form_categories'];
+const form_albums = document.forms['form_albums'];
+
+//divs side form created
+const div_artists = document.querySelector('.div_artists');
+const div_songs = document.querySelector('.div_songs');
+const div_categories = document.querySelector('.div_categories');
+const div_albums = document.querySelector('.div_albums');
+
+//Global VAR Switch 
+var opened_modal;
 
 //==========================================================================
 //Select Element btn Modal
@@ -231,8 +244,7 @@ const add_artist = document.querySelector('#add_artist');
 const update_artist = document.querySelector('#update_artist');
 //Duplicate Div the FORM
 let nodes_artist = document.querySelector('.nodes_artist');
-let div_to_coller_artist = document.createElement('div');
-div_to_coller_artist.setAttribute('class','anotherdiv_artists');
+let div_to_coller_artist;
 add_artist.addEventListener('click',()=>{
     div_to_coller_artist.append(nodes_artist.cloneNode(true));
 });
@@ -243,12 +255,9 @@ const add_song = document.querySelector('#add_song');
 const save_song = document.querySelector('#save_song');
 const update_song = document.querySelector('#update_song');
 //Duplicate Div the FORM
-let div_to_coller_song = document.querySelector('.anotherdiv_songs');
 let nodes_song = document.querySelector('.nodes_song');
-// let div_song = document.createElement('div');
-// div_song.setAttribute('class','div_songs');
+let div_to_coller_song;
 add_song.addEventListener('click',()=>{
-  // div_to_coller_song.append(div_song);
   div_to_coller_song.append(nodes_song.cloneNode(true));
 });
 
@@ -260,15 +269,32 @@ const update_categorie = document.querySelector('#update_categorie');
 //Duplicate Div the FORM
 let div_to_coller_categorie = document.querySelector('.anotherdiv_categories');
 let nodes_categorie = document.querySelector('.nodes_categorie');
-// let div_categorie = document.createElement('div');
-// div_categorie.setAttribute('class','div_categorie');
 add_categorie.addEventListener('click',()=>{
-  // div_to_coller_categorie.append(div_categorie);
   div_to_coller_categorie.append(nodes_categorie.cloneNode(true));
 });
+
+//___
+//Albums btn form
+const add_album = document.querySelector('#add_album');
+const save_album = document.querySelector('#save_album');
+const update_album = document.querySelector('#update_album');
+//Duplicate Div the FORM
+let div_to_coller_album = document.querySelector('.anotherdiv_albums');
+let nodes_album = document.querySelector('.nodes_album');
+add_album.addEventListener('click',()=>{
+  div_to_coller_album.append(nodes_album.cloneNode(true));
+});
+
 //============================
 // show and hidden btn modal
 btn_show_artists_add.addEventListener('click',()=>{
+  //Create another div
+  div_to_coller_artist = document.createElement('div');
+  div_to_coller_artist.setAttribute('class','anotherdiv_artists');
+  div_artists.append(div_to_coller_artist);
+
+  opened_modal = 'artists';
+  //show and hide
   add_artist.style.display = "block";
   save_artist.style.display = "block";
   update_artist.style.display = "none";
@@ -282,11 +308,20 @@ icon_btn_edit_artists.addEventListener('click',()=>{
 //___
 // show and hidden btn modal
 btn_show_songs_add.addEventListener('click',()=>{
+  //Create another div
+  div_to_coller_song = document.createElement('div');
+  div_to_coller_song.setAttribute('class','anotherdiv_songs');
+  div_songs.append(div_to_coller_song);
+  
+  opened_modal = 'songs';
+  //show and hide
   add_song.style.display = "block";
   save_song.style.display = "block";
   update_song.style.display = "none";
 });
-icon_btn_edit_songs.addEventListener('click',()=>{
+
+icon_btn_edit_songs.addEventListener('click',()=>{  
+  //show and hide
   update_song.style.display = "block";
   save_song.style.display = "none";
   add_song.style.display = "none";
@@ -295,28 +330,70 @@ icon_btn_edit_songs.addEventListener('click',()=>{
 //___
 // show and hidden btn modal
 btn_show_categories_add.addEventListener('click',()=>{
+  //Create another div
+  div_to_coller_categorie = document.createElement('div');
+  div_to_coller_categorie.setAttribute('class','anotherdiv_categorie');
+  div_categories.append(div_to_coller_categorie);
+  
+  opened_modal = 'categories';
+
+  //show and hide
   add_categorie.style.display = "block";
   save_categorie.style.display = "block";
   update_categorie.style.display = "none";
 });
-icon_btn_edit_categories.addEventListener('click',()=>{
+icon_btn_edit_albums.addEventListener('click',()=>{
   update_categorie.style.display = "block";
   save_categorie.style.display = "none";
   add_categorie.style.display = "none";
+})
+
+//___
+// show and hidden btn modal
+btn_show_albums_add.addEventListener('click',()=>{
+  //Create another div
+  div_to_coller_album = document.createElement('div');
+  div_to_coller_album.setAttribute('class','anotherdiv_album');
+  div_albums.append(div_to_coller_album);
+  
+  opened_modal = 'albums';
+
+  //show and hide
+  add_album.style.display = "block";
+  save_album.style.display = "block";
+  update_album.style.display = "none";
+});
+icon_btn_edit_categories.addEventListener('click',()=>{
+  update_album.style.display = "block";
+  save_album.style.display = "none";
+  add_album.style.display = "none";
 })
 
 //__
 //loop remove inputs if clicked close
 btn_close_all.forEach((item)=>{
   item.addEventListener('click',()=>{
-    // // div_to_coller_categorie.remove();
-    // // div_artist.remove();
-    // // div_song.remove();
-    // // div_categorie.remove();
-    // console.log(div_song_ready);
-    // // div_song_ready.forEach((s)=>{
-      
-    // // })
-    // nodes_artist.parentNode.removeChild(div_to_coller_artist);
+    // div_to_coller_artist.remove();
+    // div_to_coller_song.remove();
+    // div_to_coller_categorie.remove();
+    // div_to_coller_album.remove();
+    switch (opened_modal) {
+      case 'artists':
+        div_to_coller_artist.remove();
+        break;
+      case 'songs':
+        div_to_coller_song.remove();
+        break;
+      case 'categories':
+        div_to_coller_categorie.remove();
+        break;
+      case 'albums':
+        div_to_coller_album.remove();
+        break;
+      default:
+        break;
+    }
   })
 });
+
+

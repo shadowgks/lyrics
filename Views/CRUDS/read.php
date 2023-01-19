@@ -4,12 +4,15 @@
 //Artists 
 $obj_artists = new ArtistController();
 $data_artists = $obj_artists->getAllArtists();
-//Geners
-$obj_geners = new CategorieController();
-$data_geners = $obj_geners->getAllGeners();
+//Categories
+$obj_categories = new CategorieController();
+$data_categories = $obj_categories->getAllCategorie();
 //Songs
 $obj_songs = new SongController();
 $data_songs = $obj_songs->getAllSongs();
-//Clients
+//Admins
 $obj_users = new AdminController();
 $data_users = $obj_users->getAllUsers();
+//Albums
+$obj_albums = new AlbumController();
+$data_albums = $obj_albums->getAllAlbums();
