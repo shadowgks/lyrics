@@ -784,10 +784,14 @@ require_once 'CRUDS/update.php';
                             </select>
                         </div>
                         <div>
-                            <label for="album" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
+                            <label for="album" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
                             <select name="album[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="" disabled>Select albums</option>
-                                <option value="">Stay</option>
+                                <?php
+                                foreach ($data_albums as $album) {
+                                    echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                         <div>
