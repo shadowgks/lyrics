@@ -20,7 +20,7 @@ if(isset($_POST['save_artist'])){
 //     $add_categorie = $obj_categorie->addCategorie();
 // }
 // //Albums
-// if(isset($_POST['save_album'])){
-//     $obj_categorie = new CategorieController();
-//     $add_categorie = $obj_categorie->addCategorie();
-// }
+if(isset($_POST['save_album'])){
+    $obj_album = new AlbumController();
+    $add_Album = $obj_album->addAlbum();
+}

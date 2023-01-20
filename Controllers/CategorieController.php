@@ -17,7 +17,7 @@ class CategorieController
                 'name_categorie' => $_POST['name'],
             );
 
-  
+
 
             $add = Categorie::add($data);
             if ($add === true) {

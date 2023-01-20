@@ -15,7 +15,6 @@ class Artist{
         
         for ($i=0; $i < count($data['name_artist']); $i++) { 
             //Upload img
-           
             //-----------------------------------------------
             $tmp_picture_name     = $data['picture_artist'].['tmp_name'];
             //unique id img

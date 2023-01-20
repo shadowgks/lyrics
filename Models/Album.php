@@ -10,9 +10,11 @@ class Album{
 
     //create
     static function add($data){
-        for($i=0; $i<count($data['name_gener']); $i++){
+
+        for($i=0; $i<count($data['name_album']); $i++){
+            
             $stm = DB::connectDB()->prepare("INSERT INTO `albums`(`name`) VALUES (?)");
-            $exe = $stm->execute([$data['name_gener'][$i]]);
+            $exe = $stm->execute([$data['name_album'][$i]]);
         }
         if($exe){
             return true;
