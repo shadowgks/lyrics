@@ -287,7 +287,6 @@ require_once 'CRUDS/update.php';
                                     <use width="30" height="20" transform="rotate(-74 272.4 -114) scale(25.6137)" xlink:href="#a" />
                                     <use width="30" height="20" transform="matrix(16 -19.968 19.968 16 256 230.4)" xlink:href="#a" />
                                 </svg>
-                                中文 (繁體)
                             </div>
                         </a>
                     </li>
@@ -701,7 +700,7 @@ require_once 'CRUDS/update.php';
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="Views\CRUDS\add.php" method="post" name="form_artists" enctype="multipart/form-data">
+                <form action="" method="post" name="form_artists" enctype="multipart/form-data">
                     <div class="nodes_artist grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -726,11 +725,11 @@ require_once 'CRUDS/update.php';
                             <i class="fa-solid fa-plus mr-2"></i>
                             Add
                         </button>
-                        <button type="submit" id="save_artist" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button type="submit" id="save_artist" name="save_artist" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <i class="fa-solid fa-paper-plane mr-2"></i>
                             Save
                         </button>
-                        <button type="submit" id="update_artist" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="submit" id="update_artist" name="update_artist" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-pen-to-square mr-2"></i>
                             Update
                         </button>
@@ -773,14 +772,22 @@ require_once 'CRUDS/update.php';
                             <label for="categorie" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorie</label>
                             <select name="categorie[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="" disabled>Select categories</option>
-                                <option value="">Stay</option>
+                                <?php
+                                foreach ($data_categories as $categorie) {
+                                    echo '<option value="' . $categorie['id'] . '">' . $categorie['name'] . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                         <div>
                             <label for="artist" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
                             <select name="artist[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="" disabled>Select artists</option>
-                                <option value="">Stay</option>
+                                <?php
+                                foreach ($data_artists as $artist) {
+                                    echo '<option value="' . $artist['id'] . '">' . $artist['name'] . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                         <div>
@@ -810,15 +817,15 @@ require_once 'CRUDS/update.php';
                     </div>
                     <!-- btns -->
                     <div class="flex gap-3">
-                        <button type="button" id="add_song" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="button" id="add_song" name="add_song" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-plus mr-2"></i>
                             Add
                         </button>
-                        <button type="submit" id="save_song" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button type="submit" id="save_song" name="save_song" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <i class="fa-solid fa-paper-plane mr-2"></i>
                             Save
                         </button>
-                        <button type="submit" id="update_song" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="submit" id="update_song" name="update_song" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-pen-to-square mr-2"></i>
                             Update
                         </button>
@@ -915,15 +922,15 @@ require_once 'CRUDS/update.php';
                     </div>
                     <!-- btns -->
                     <div class="flex gap-3">
-                        <button type="button" id="add_album" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="button" id="add_album" name="add_album" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-plus mr-2"></i>
                             Add
                         </button>
-                        <button type="submit" id="save_album" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button type="submit" id="save_album" name="save_album" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <i class="fa-solid fa-paper-plane mr-2"></i>
                             Save
                         </button>
-                        <button type="submit" id="update_album" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                        <button type="submit" id="update_album" name="update_album" class="text-white inline-flex items-center bg-orange-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             <i class="fa-solid fa-pen-to-square mr-2"></i>
                             Update
                         </button>
@@ -935,7 +942,6 @@ require_once 'CRUDS/update.php';
         </div>
     </div>
     <!-- END Main modal albums-->
-
 
 
     <!-- BEGIN Modal delete -->

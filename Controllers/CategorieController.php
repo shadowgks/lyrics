@@ -7,6 +7,7 @@ class CategorieController
         $data_categorie = Categorie::getAll();
         return $data_categorie;
     }
+    
     //create
     function addCategorie()
     {
