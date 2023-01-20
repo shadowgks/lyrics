@@ -15,10 +15,10 @@ if(isset($_POST['save_artist'])){
     $add_artist = $obj_artist->addArtist();
 }
 // //Songs
-// if(isset($_POST['save_song'])){
-//     $obj_categorie = new CategorieController();
-//     $add_categorie = $obj_categorie->addCategorie();
-// }
+if(isset($_POST['save_song'])){
+    $obj_song = new SongController();
+    $add_song = $obj_song->addSong();
+}
 // //Albums
 if(isset($_POST['save_album'])){
     $obj_album = new AlbumController();

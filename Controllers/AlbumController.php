@@ -11,22 +11,23 @@ class AlbumController
     //create
     function addAlbum()
     {
-        if (isset($_POST['save_album'])) {
+        var_dump($_POST);
+        die;
+        //Check inputs form if empty
+        if(empty($_POST['name'])){
+            $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
+            header("location: dashboard");
+        }else{
             $data = array(
                 'name_album' => $_POST['name'],
             );
-
-
             $add = Album::add($data);
             if ($add === true) {
-                // Redirect::To('home');
-                // var_dump(Redirect::To('home.php'));
-
-                // die;
-                echo 'good';
+                $_SESSION['Success'] = '';
                 header('location:dashboard');
             } else {
-                echo 'faild';
+                $_SESSION['Failed'] = '';
+                header('location:dashboard');
             }
         }
     }

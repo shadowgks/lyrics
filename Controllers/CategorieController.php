@@ -11,24 +11,20 @@ class CategorieController
     //create
     function addCategorie()
     {
-        if (isset($_POST['save_categorie'])) {
-
+        if(empty($_POST['name'])){
+            $_SESSION['Failed'] = "Something is wrong please try again in table Categories!";
+            header("location: dashboard");
+        }else{
             $data = array(
                 'name_categorie' => $_POST['name'],
             );
-
-
-
             $add = Categorie::add($data);
             if ($add === true) {
-                // Redirect::To('home');
-                // var_dump(Redirect::To('home.php'));
-
-                // die;
-                echo 'good';
+                $_SESSION['Success'] = '';
                 header('location:dashboard');
             } else {
-                echo 'faild';
+                $_SESSION['Failed'] = '';
+                header('location:dashboard');
             }
         }
     }

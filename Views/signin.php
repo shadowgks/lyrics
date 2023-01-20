@@ -1,3 +1,6 @@
+<?php
+require_once 'CRUDS/read.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,7 +95,7 @@
                         class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in to your account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#">
+                    <form class="space-y-4 md:space-y-6" method="post">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
@@ -121,7 +124,7 @@
                                 class="text-sm font-medium text-orange-600 hover:underline dark:text-orange-500">Forgot
                                 password?</a>
                         </div>
-                        <button type="submit"
+                        <button type="submit" name="sign_in"
                             class="w-full text-white bg-primary-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Sign
                             in</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
