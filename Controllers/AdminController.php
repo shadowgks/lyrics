@@ -1,11 +1,18 @@
 <?php
 
 class AdminController{
-    function getAllUsers(){
-        $data_Users = Admin::getAll();
-        return $data_Users;
-    }
     
+    //read
+    function count(){
+        $count_admins = Admin::countAdmin();
+        return $count_admins;
+    }
+    //__
+    function getAllAdmins(){
+        $data_admins = Admin::getAll();
+        return $data_admins;
+    }
+    //__
     function signIN(){
         //Check inputs form if empty
         if(empty($_POST['email'])

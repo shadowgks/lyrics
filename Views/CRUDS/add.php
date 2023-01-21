@@ -1,8 +1,5 @@
 <?php
-// if(isset($_POST['add_artist'])){
-//     var_dump($_POST);
-//     die;
-// }
+
 //Categories
 if (isset($_POST['save_categorie'])) {
     $obj_categorie = new CategorieController();

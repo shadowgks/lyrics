@@ -4,6 +4,7 @@ require_once 'CRUDS/delete.php';
 require_once 'CRUDS/read.php';
 require_once 'CRUDS/search.php';
 require_once 'CRUDS/update.php';
+require_once 'CRUDS/sign_in.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -303,7 +304,7 @@ require_once 'CRUDS/update.php';
         <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800 dark:border-white">
             <div class="container flex flex-wrap items-center justify-between">
                 <a href="#" class="flex items-center">
-                    <img src="public/assets/imgs/logo/logo lyrics_song.png" class="h-16 sm:h-16 mr-3" alt="Lyrics Songs" />
+                    <img src="public/assets/imgs/logo/lyrics_song.png" class="h-16 sm:h-16 mr-3" alt="Lyrics Songs" />
                     <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">DASHBOARD</span>
                 </a>
                 <div class="flex items-center md:order-2">
@@ -347,7 +348,7 @@ require_once 'CRUDS/update.php';
         <!-- END NAVBAR -->
 
         <!-- BEGIN Statistic cards -->
-        <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 dark:bg-gray-900 p-5 sm:p-10">
+        <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-5 dark:bg-gray-900 p-5 sm:p-10">
             <div class="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
                 <div class="p-4 flex items-center">
                     <div class="p-3 rounded-full text-orange-500 dark:text-orange-100 bg-orange-100 dark:bg-orange-500 mr-4">
@@ -361,7 +362,13 @@ require_once 'CRUDS/update.php';
                             Total clients
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            ?
+                            <?php
+                                if($count_admins['count'] == 0){
+                                    echo '0';
+                                }else{
+                                    echo $count_admins['count'];
+                                } 
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -378,7 +385,13 @@ require_once 'CRUDS/update.php';
                             Artists
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            ?
+                            <?php
+                                if($count_artists['count'] == 0){
+                                    echo '0';
+                                }else{
+                                    echo $count_artists['count'];
+                                } 
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -396,7 +409,13 @@ require_once 'CRUDS/update.php';
                             Songs
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            ?
+                            <?php
+                                if($count_songs['count'] == 0){
+                                    echo '0';
+                                }else{
+                                    echo $count_songs['count'];
+                                } 
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -410,10 +429,39 @@ require_once 'CRUDS/update.php';
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                            Gener
+                            Categores
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            ?
+                            <?php
+                                if($count_categories['count'] == 0){
+                                    echo '0';
+                                }else{
+                                    echo $count_categories['count'];
+                                } 
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
+                <div class="p-4 flex items-center">
+                    <div class="p-3 rounded-full text-teal-500 dark:text-teal-100 bg-teal-100 dark:bg-teal-500 mr-4">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5">
+                            <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                            Albums
+                        </p>
+                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                            <?php
+                                if($count_albums['count'] == 0){
+                                    echo '0';
+                                }else{
+                                    echo $count_albums['count'];
+                                } 
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -445,17 +493,17 @@ require_once 'CRUDS/update.php';
                         </thead>
                         <tbody>
                             <?php
-                            $idU = 1;
-                            foreach ($data_users as $user) {
-                                echo '<input type="hidden" value="' . $user['id'] . '">
+                            $idA = 1;
+                            foreach ($data_admins as $admin) {
+                                echo '<input type="hidden" value="' . $admin['id'] . '">
                                 <tr>
-                                <td>' . $idU . '</td>
+                                <td>' . $idA . '</td>
                                 <td class="md:flex items-center">
-                                    <img class="w-12 h-12 rounded-full" src="public/assets/imgs/songs/adele_hello.jpg" alt="#"> <span class="ml-2">' . $user['firstName'] . ' ' . $user['lastName'] . '</span>
+                                    <img class="w-12 h-12 rounded-full" src="'.$admin['picture'].'" alt="#"> <span class="ml-2">' . $admin['firstName'] . ' ' . $admin['lastName'] . '</span>
                                 </td>
-                                <td>' . $user['email'] . '</td>
+                                <td>' . $admin['email'] . '</td>
                             </tr>';
-                                $idU++;
+                                $idA++;
                             }
                             ?>
                         </tbody>

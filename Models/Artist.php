@@ -3,9 +3,17 @@
 class Artist
 {
     //read
-    static function getAll()
+    //statistic
+    static function countArtist()
     {
-        $stm = db::connectDB()->prepare('SELECT * FROM artists');
+        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM artists");
+        $stm->execute();
+        return $stm->fetch();
+    }
+    //__
+    static function getAll($id_admin)
+    {
+        $stm = db::connectDB()->prepare("SELECT * FROM artists where id_admin = $id_admin");
         $stm->execute();
         return $stm->fetchAll();
     }
@@ -33,8 +41,8 @@ class Artist
             move_uploaded_file($tmp_picture_name, $distination_file);
             //-----------------------------------------------
 
-            $stm = DB::connectDB()->prepare("INSERT INTO artists(name,picture,date_birthday) VALUES (?,?,?)");
-            $exe = $stm->execute([$data['name_artist'][$i], $distination_file, $data['date_birthday_artist'][$i]]);
+            $stm = DB::connectDB()->prepare("INSERT INTO artists(name,picture,date_birthday,id_admin) VALUES (?,?,?,?)");
+            $exe = $stm->execute([$data['name_artist'][$i], $distination_file, $data['date_birthday_artist'][$i],$data['id_admin']]);
         }
         if ($exe) {
             return true;

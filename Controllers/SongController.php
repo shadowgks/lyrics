@@ -1,14 +1,22 @@
 <?php
 
 class SongController{
+    //read
+    function count(){
+        $count_songs = Song::countSong();
+        return $count_songs;
+    }
+    //__
     function getAllSongs(){
-        $data_songs = Song::getAll();
+        $id_admin = $_SESSION['Admin']['id'];
+        $data_songs = Song::getAll($id_admin);
         return $data_songs;
     }
 
     //create
     function addSong()
     {
+        $id_admin = $_SESSION['Admin']['id'];
         //Check inputs form if empty
         if(empty($_POST['name']) 
         || empty($_POST['release_date'])
@@ -27,7 +35,7 @@ class SongController{
                 'id_artist' => $_POST['artist'],
                 'id_cat' => $_POST['categorie'],
                 'id_album' => $_POST['album'],
-                'id_admin' => $_SESSION['Admin']['id'],
+                'id_admin' => $id_admin,
             );
             $add = Song::add($data);
             if ($add === true) {

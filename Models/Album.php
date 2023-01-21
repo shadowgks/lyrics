@@ -2,10 +2,19 @@
 
 class Album{
     //read
-    static function getAll(){
-        $stm = db::connectDB()->prepare('SELECT * FROM albums');
+    //statistic
+    static function countAlbums()
+    {
+        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM admins");
+        $stm->execute();
+        return $stm->fetch();
+    }
+    //__
+    static function getAll($id_admin){
+        $stm = db::connectDB()->prepare("SELECT * FROM `albums` where id_admin = $id_admin");
         $stm->execute();
         return $stm->fetchAll();
+        
     }
 
     //create
@@ -13,8 +22,8 @@ class Album{
 
         for($i=0; $i<count($data['name_album']); $i++){
             
-            $stm = DB::connectDB()->prepare("INSERT INTO `albums`(`name`) VALUES (?)");
-            $exe = $stm->execute([$data['name_album'][$i]]);
+            $stm = DB::connectDB()->prepare("INSERT INTO `albums`(`name`,`id_admin`) VALUES (?,?)");
+            $exe = $stm->execute([$data['name_album'][$i],$data['id_admin']]);
         }
         if($exe){
             return true;

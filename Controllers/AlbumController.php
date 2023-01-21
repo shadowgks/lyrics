@@ -2,17 +2,23 @@
 
 class AlbumController
 {
+    //read
+    function count(){
+        $count_albums = Album::countAlbums();
+        return $count_albums;
+    }
+    //__
     function getAllAlbums()
     {
-        $data_albums = Album::getAll();
+        $id_admin = $_SESSION['Admin']['id'];
+        $data_albums = Album::getAll($id_admin);
         return $data_albums;
     }
 
     //create
     function addAlbum()
     {
-        var_dump($_POST);
-        die;
+        $id_admin = $_SESSION['Admin']['id'];
         //Check inputs form if empty
         if(empty($_POST['name'])){
             $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
@@ -20,6 +26,7 @@ class AlbumController
         }else{
             $data = array(
                 'name_album' => $_POST['name'],
+                'id_admin' => $id_admin,
             );
             $add = Album::add($data);
             if ($add === true) {

@@ -3,18 +3,25 @@
 class Song
 {
     //read
-    static function getAll()
+    //statistic
+    static function countSong()
+    {
+        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM songs");
+        $stm->execute();
+        return $stm->fetch();
+    }
+    //__
+    static function getAll($id_admin)
     {
         $stm = db::connectDB()->prepare("SELECT songs.*,
         artists.name AS 'name_artist',
         categories.name AS 'name_categorie',
-        albums.name as 'name_album',
-        admins.firstName, admins.lastName
-        FROM songs join artists join categories join admins join albums
+        albums.name as 'name_album'
+        FROM songs join artists join categories join albums
         on songs.id_artist = artists.id 
         and songs.id_cat = categories.id
         and songs.id_album = albums.id
-        and songs.id_admin = admins.id;");
+        where songs.id_admin = '$id_admin'");
         $stm->execute();
         return $stm->fetchAll();
     }
