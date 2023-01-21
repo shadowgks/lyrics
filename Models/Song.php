@@ -3,14 +3,6 @@
 class Song
 {
     //read
-    //statistic
-    static function countSong()
-    {
-        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM songs");
-        $stm->execute();
-        return $stm->fetch();
-    }
-    //__
     static function getAll($id_admin)
     {
         $stm = db::connectDB()->prepare("SELECT songs.*,
@@ -23,7 +15,11 @@ class Song
         and songs.id_album = albums.id
         where songs.id_admin = '$id_admin'");
         $stm->execute();
-        return $stm->fetchAll();
+        $data_CF = array(
+            'count' => $stm->rowCount(),
+            'fetch_all' => $stm->fetchAll()
+        );
+        return $data_CF;
     }
 
     //create

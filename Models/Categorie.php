@@ -3,19 +3,15 @@
 class Categorie
 {
     //read
-    //statistic
-    static function countCategorie()
-    {
-        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM categories");
-        $stm->execute();
-        return $stm->fetch();
-    }
-    //__
     static function getAll($id_admin)
     {
         $stm = db::connectDB()->prepare("SELECT * FROM categories where id_admin = $id_admin");
         $stm->execute();
-        return $stm->fetchAll();
+        $data_CF = array(
+            'count'     => $stm->rowCount(),
+            'fetch_all' => $stm->fetchAll()
+        );
+        return $data_CF;
     }
 
     //create

@@ -3,11 +3,6 @@
 class CategorieController
 {
     //read
-    function count(){
-        $data_Users = Categorie::countCategorie();
-        return $data_Users;
-    }
-    //__
     function getAllCategorie()
     {
         $id_admin = $_SESSION['Admin']['id'];

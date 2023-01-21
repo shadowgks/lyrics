@@ -3,19 +3,15 @@
 class Artist
 {
     //read
-    //statistic
-    static function countArtist()
-    {
-        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM artists");
-        $stm->execute();
-        return $stm->fetch();
-    }
-    //__
     static function getAll($id_admin)
     {
         $stm = db::connectDB()->prepare("SELECT * FROM artists where id_admin = $id_admin");
         $stm->execute();
-        return $stm->fetchAll();
+        $data_CF = array(
+            'count'     => $stm->rowCount(),
+            'fetch_all' => $stm->fetchAll()
+        );
+        return $data_CF;
     }
 
     //create

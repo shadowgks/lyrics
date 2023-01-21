@@ -2,26 +2,20 @@
 
 class Album{
     //read
-    //statistic
-    static function countAlbums()
-    {
-        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM admins");
-        $stm->execute();
-        return $stm->fetch();
-    }
-    //__
     static function getAll($id_admin){
         $stm = db::connectDB()->prepare("SELECT * FROM `albums` where id_admin = $id_admin");
         $stm->execute();
-        return $stm->fetchAll();
-        
+        $data_CF = array(
+            'count'     => $stm->rowCount(),
+            'fetch_all' => $stm->fetchAll()
+        );
+        return $data_CF;
     }
 
     //create
     static function add($data){
 
         for($i=0; $i<count($data['name_album']); $i++){
-            
             $stm = DB::connectDB()->prepare("INSERT INTO `albums`(`name`,`id_admin`) VALUES (?,?)");
             $exe = $stm->execute([$data['name_album'][$i],$data['id_admin']]);
         }

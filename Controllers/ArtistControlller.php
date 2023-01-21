@@ -2,11 +2,6 @@
 
 class ArtistController{
     //read
-    function count(){
-        $count_artists = Artist::countArtist();
-        return $count_artists;
-    }
-    //__
     function getAllArtists(){
         $id_admin = $_SESSION['Admin']['id'];
         $data_artists = Artist::getAll($id_admin);

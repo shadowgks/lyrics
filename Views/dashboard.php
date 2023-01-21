@@ -363,10 +363,10 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_admins['count'] == 0){
+                                if($count_admins == 0){
                                     echo '0';
                                 }else{
-                                    echo $count_admins['count'];
+                                    echo $count_admins;
                                 } 
                             ?>
                         </p>
@@ -386,10 +386,10 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_artists['count'] == 0){
+                                if($count_artists == 0){
                                     echo '0';
                                 }else{
-                                    echo $count_artists['count'];
+                                    echo $count_artists;
                                 } 
                             ?>
                         </p>
@@ -410,10 +410,10 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_songs['count'] == 0){
+                                if($count_songs == 0){
                                     echo '0';
                                 }else{
-                                    echo $count_songs['count'];
+                                    echo $count_songs;
                                 } 
                             ?>
                         </p>
@@ -433,10 +433,10 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_categories['count'] == 0){
+                                if($count_categories == 0){
                                     echo '0';
                                 }else{
-                                    echo $count_categories['count'];
+                                    echo $count_categories;
                                 } 
                             ?>
                         </p>
@@ -456,10 +456,10 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_albums['count'] == 0){
+                                if($count_albums == 0){
                                     echo '0';
                                 }else{
-                                    echo $count_albums['count'];
+                                    echo $count_albums;
                                 } 
                             ?>
                         </p>
@@ -494,7 +494,7 @@ require_once 'CRUDS/sign_in.php';
                         <tbody>
                             <?php
                             $idA = 1;
-                            foreach ($data_admins as $admin) {
+                            foreach ($data_ad as $admin) {
                                 echo '<input type="hidden" value="' . $admin['id'] . '">
                                 <tr>
                                 <td>' . $idA . '</td>

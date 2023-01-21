@@ -3,10 +3,10 @@
 class AlbumController
 {
     //read
-    function count(){
-        $count_albums = Album::countAlbums();
-        return $count_albums;
-    }
+    // function count(){
+    //     $count_albums = Album::countAlbums();
+    //     return $count_albums;
+    // }
     //__
     function getAllAlbums()
     {

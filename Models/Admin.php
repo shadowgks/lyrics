@@ -3,19 +3,15 @@
 class Admin
 {
     //read
-    //statistic
-    static function countAdmin()
-    {
-        $stm = db::connectDB()->prepare("SELECT count(id) AS 'count' FROM admins");
-        $stm->execute();
-        return $stm->fetch();
-    }
-    //all admins
     static function getAll()
     {
         $stm = db::connectDB()->prepare("SELECT * FROM admins");
         $stm->execute();
-        return $stm->fetchAll();
+        $data_CF = array(
+            'count'     => $stm->rowCount(),
+            'fetch_all' => $stm->fetchAll()
+        );
+        return $data_CF;
     }
     //Sign in
     static function sign_In($data)

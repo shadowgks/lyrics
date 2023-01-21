@@ -3,11 +3,6 @@
 class AdminController{
     
     //read
-    function count(){
-        $count_admins = Admin::countAdmin();
-        return $count_admins;
-    }
-    //__
     function getAllAdmins(){
         $data_admins = Admin::getAll();
         return $data_admins;

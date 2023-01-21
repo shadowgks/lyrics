@@ -2,11 +2,6 @@
 
 class SongController{
     //read
-    function count(){
-        $count_songs = Song::countSong();
-        return $count_songs;
-    }
-    //__
     function getAllSongs(){
         $id_admin = $_SESSION['Admin']['id'];
         $data_songs = Song::getAll($id_admin);
