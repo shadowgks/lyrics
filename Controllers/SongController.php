@@ -17,7 +17,7 @@ class SongController{
         || empty($_POST['categorie'])
         || empty($_POST['album'])){
             $_SESSION['Failed'] = "Something is wrong please try again in table songs!";
-            header("location: dashboard.php");
+            header("location: dashboard");
         }else{
             $data = array(
                 'name_song' => $_POST['name'],
@@ -27,7 +27,7 @@ class SongController{
                 'id_artist' => $_POST['artist'],
                 'id_cat' => $_POST['categorie'],
                 'id_album' => $_POST['album'],
-                'id_admin' => '4',
+                'id_admin' => $_SESSION['Admin']['id'],
             );
             $add = Song::add($data);
             if ($add === true) {

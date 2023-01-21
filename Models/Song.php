@@ -34,7 +34,7 @@ class Song
             $new_unique_name      = uniqid("song.",true);
             //check picture name
             if(empty($data['picture']['name'][$i])){
-                $distination_file = 'public/assets/imgs/pictures/upload/default/songs/default_picture.png';
+                $distination_file = 'public/assets/imgs/pictures_upload/default/songs/default_picture.png';
             }else{
                 $distination_file = 'public/assets/imgs/pictures_upload/new/songs/'.$new_unique_name.'.'.$split_type;
             }

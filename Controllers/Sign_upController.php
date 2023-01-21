@@ -1,37 +1,39 @@
 <?php
 
-class SignupController{
+class SignupController
+{
+    
     //create
-    function regestreUser(){
-
+    function signUpUser()
+    {
+        
         //Check inputs form if empty
-        // if(empty($_POST['name']) 
-        // || empty($_POST['release_date'])
-        // || empty($_POST['lyrics'])
-        // || empty($_POST['artist'])
-        // || empty($_POST['categorie'])
-        // || empty($_POST['album'])){
-        //     $_SESSION['Failed'] = "Something is wrong please try again in table songs!";
-        //     header("location: dashboard.php");
-        // }else{
-        //     $data = array(
-        //         'name_song' => $_POST['name'],
-        //         'release_date' => $_POST['release_date'],
-        //         'lyrics' => $_POST['lyrics'],
-        //         'picture' => $_FILES['picture'],
-        //         'id_artist' => $_POST['artist'],
-        //         'id_cat' => $_POST['categorie'],
-        //         'id_album' => $_POST['album'],
-        //         'id_admin' => '4',
-        //     );
-        //     $add = Song::add($data);
-        //     if ($add === true) {
-        //         $_SESSION['Success'] = '';
-        //         header('location:dashboard');
-        //     } else {
-        //         $_SESSION['Failed'] = '';
-        //         header('location:dashboard');
-        //     }
-        // }
+        if (empty($_POST['firstname'])
+            || empty($_POST['lastname'])
+            || empty($_POST['email'])
+            || empty($_POST['birthday-date'])
+            || empty($_POST['password'])
+            || empty($_POST['confirm-password'])) {
+            $_SESSION['Failed'] = "Something is wrong please try again !";
+            header("location: signup");
+        } else {
+            $data = array(
+                'firstname' => $_POST['firstname'],
+                'lastname' => $_POST['lastname'],
+                'date_birthday' => $_POST['birthday-date'],
+                'email' => $_POST['email'],
+                'picture' => $_FILES['picture'],
+                'password' => $_POST['password'],
+            );
+            
+            $add = Sign_up::add($data);
+            if ($add === true) {
+                $_SESSION['Success'] = '';
+                header('location:signin');
+            } else {
+                $_SESSION['Failed'] = '';
+                header('location:signup');
+            }
+        }
     }
 }

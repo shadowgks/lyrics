@@ -497,7 +497,7 @@ require_once 'CRUDS/update.php';
                                         ' . $idA . '
                                     </td>
                                     <td class="md:flex items-center">
-                                        <img class="w-12 h-12 rounded-full" src="public/assets/imgs/songs/adele_hello.jpg" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
+                                        <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="artist"> <span class="ml-2">' . $item['name'] . '</span>
                                     </td>
                                     <td> ' . $item['date_birthday'] . ' </td>
                                     <td>
@@ -556,7 +556,7 @@ require_once 'CRUDS/update.php';
                                     ' . $idS . '
                                 </td>
                                 <td class="md:flex items-center">
-                                    <img class="w-12 h-12 rounded-full" src="public/assets/imgs/songs/adele_hello.jpg" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
+                                    <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
                                 </td>
                                 <td>' . $item['release_date'] . '</td>
                                 <td>' . $item['lyrics'] . '</td>
@@ -707,7 +707,7 @@ require_once 'CRUDS/update.php';
                             <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
                         </div>
                         <div>
-                            <label for="picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Picture</label>
+                            <label for="picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Picture(Optional)</label>
                             <input name="picture[]" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" accept=".jpg,.jpeg,.png">
                         </div>
                         <div>
@@ -739,7 +739,7 @@ require_once 'CRUDS/update.php';
             </div>
         </div>
     </div>
-    <!-- END Main modal Song-->
+    <!-- END Main modal artists-->
     <!-- BEGIN Main modal songs -->
     <div id="defaultModal2" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
@@ -765,7 +765,7 @@ require_once 'CRUDS/update.php';
                             <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
                         </div>
                         <div>
-                            <label for="picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Picture</label>
+                            <label for="picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Picture(Optional)</label>
                             <input name="picture[]" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" accept=".jpg,.jpeg,.png">
                         </div>
                         <div>
