@@ -262,12 +262,12 @@ if(!isset($_SESSION['Admin'])){
                             <?php
                             $idA = 1;
                             foreach ($data_ad as $admin) {
-                                echo '<input type="hidden" value="' . $admin['id'] . '">
+                                echo '
                                 <tr>
-                                <td>' . $idA . '</td>
-                                <td class="md:flex items-center">
-                                    <img class="w-12 h-12 rounded-full" src="'.$admin['picture'].'" alt="#"> <span class="ml-2">' . $admin['firstName'] . ' ' . $admin['lastName'] . '</span>
-                                </td>
+                                    <td>' . $idA . '</td>
+                                    <td class="md:flex items-center">
+                                        <img class="w-12 h-12 rounded-full" src="'.$admin['picture'].'" alt="#"> <span class="ml-2" truncate>' . $admin['firstName'] . ' ' . $admin['lastName'] . '</span>
+                                    </td>
                                 <td>' . $admin['email'] . '</td>
                             </tr>';
                                 $idA++;
@@ -312,7 +312,7 @@ if(!isset($_SESSION['Admin'])){
                                         ' . $idA . '
                                     </td>
                                     <td class="md:flex items-center">
-                                        <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="artist"> <span class="ml-2">' . $item['name'] . '</span>
+                                        <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="artist"> <span class="ml-2 text-ellipsis overflow-hidden">' . $item['name'] . '</span>
                                     </td>
                                     <td> ' . $item['date_birthday'] . ' </td>
                                     <td>
@@ -376,7 +376,7 @@ if(!isset($_SESSION['Admin'])){
                                         <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
                                     </td>
                                     <td>' . $item['release_date'] . '</td>
-                                    <td>' . $item['lyrics'] . '</td>
+                                    <td class="text-ellipsis overflow-hidden flex">' . $item['lyrics'] . '</td>
                                     <td>' . $item['name_artist'] . '</td>
                                     <td>' . $item['name_album'] . '</td>
                                     <td>' . $item['name_categorie'] . '</td>
@@ -802,11 +802,10 @@ if(!isset($_SESSION['Admin'])){
     <!-- ================================== -->
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+    <!-- ================================ -->
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
     <!-- ================================ -->
     <!-- Begin flowbite js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.js"></script>
@@ -815,11 +814,6 @@ if(!isset($_SESSION['Admin'])){
     <!-- Begin file js -->
     <script src="public/assets/js/script.js"></script>
     <!-- End file js -->
-    <!-- BEGIN ckeditor -->
-    <script>
-        CKEDITOR.replace('lyrics_id');
-    </script>
-    <!-- END ckeditor -->
 </body>
 
 </html>

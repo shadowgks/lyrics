@@ -5,7 +5,8 @@ $(document).ready(function() {
     }).columns.adjust().responsive.recalc();
 });
 
-
+// Ckeditor
+CKEDITOR.replace('lyrics_id');
 
 //++++++++++++++++++++++++++++++
 //Optimaze Modal form
