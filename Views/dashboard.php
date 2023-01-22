@@ -4,7 +4,7 @@ require_once 'CRUDS/delete.php';
 require_once 'CRUDS/read.php';
 require_once 'CRUDS/search.php';
 require_once 'CRUDS/update.php';
-require_once 'CRUDS/sign_in.php';
+require_once 'LOGIN/sign_in.php';
 
 if(!isset($_SESSION['Admin'])){
     header('location: signin');
@@ -117,7 +117,7 @@ if(!isset($_SESSION['Admin'])){
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                <a href="Views/LOGIN/sign_out.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
                                     out</a>
                             </li>
                         </ul>

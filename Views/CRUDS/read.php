@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_SESSION['Admin'])){
     //Artists 
     $obj_artists = new ArtistController();
