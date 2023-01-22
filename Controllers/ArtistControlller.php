@@ -3,9 +3,9 @@
 class ArtistController{
     //read
     function getAllArtists(){
-        $id_admin = $_SESSION['Admin']['id'];
-        $data_artists = Artist::getAll($id_admin);
-        return $data_artists;
+            $id_admin = $_SESSION['Admin']['id'];
+            $data_artists = Artist::getAll($id_admin);
+            return $data_artists;
     }
 
     //create
@@ -57,6 +57,19 @@ class ArtistController{
                 $_SESSION['Failed'] = '';
                 header('location:dashboard');
             }
+        }
+    }
+
+    //delete
+    function deleteArtist()
+    {
+        $add = Artist::delete($_POST['id']);
+        if ($add === true) {
+            $_SESSION['Success'] = '';
+            header('location:dashboard');
+        } else {
+            $_SESSION['Failed'] = '';
+            header('location:dashboard');
         }
     }
 }

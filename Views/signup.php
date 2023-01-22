@@ -1,5 +1,8 @@
 <?php
 require_once 'CRUDS/add.php';
+if(isset($_SESSION['Admin'])){
+    header('location: dashboard');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

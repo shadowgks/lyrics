@@ -1,6 +1,11 @@
 <?php
 require_once 'CRUDS/sign_in.php';
 ?>
+<?php
+if(isset($_SESSION['Admin'])){
+    header('location: dashboard');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

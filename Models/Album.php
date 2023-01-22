@@ -15,7 +15,6 @@ class Album{
 
     //create
     static function add($data){
-
         for($i=0; $i<count($data['name_album']); $i++){
             $stm = DB::connectDB()->prepare("INSERT INTO `albums`(`name`,`id_admin`) 
             VALUES (?,?)");
@@ -50,7 +49,5 @@ class Album{
         }else{
             return false;
         }
-    }
-
-    
+    } 
 }

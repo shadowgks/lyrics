@@ -110,7 +110,13 @@ function icon_btn_edit_artists(id,name,date_birthday){
   form_artists['name[]'].value = name;
   form_artists['birthday_date[]'].value = date_birthday;
 }
+//delete
+function deleteArtist($id){
+  document.querySelector('#alert_delete').removeAttribute("name");
+  document.querySelector('#alert_delete').setAttribute("name","delete_artist");
 
+  form_delete['id'].value = $id;
+}
 
 //___
 // show and hidden btn modal songs
@@ -144,7 +150,13 @@ function icon_btn_edit_songs(id,name,release_date,lyrics,id_artist,id_cat,id_alb
   form_songs['categorie[]'].value = id_cat;
   form_songs['album[]'].value = id_album;
 }
+//delete
+function deleteSong($id){
+  document.querySelector('#alert_delete').removeAttribute("name");
+  document.querySelector('#alert_delete').setAttribute("name","delete_song");
 
+  form_delete['id'].value = $id;
+}
 
 //___
 // show and hidden btn modal categories
@@ -173,6 +185,13 @@ function icon_btn_edit_categories(id,name){
 
   form_categores['id'].value = id; 
   form_categores['name[]'].value = name;
+}
+//delete
+function deleteCategorie($id){
+  document.querySelector('#alert_delete').removeAttribute("name");
+  document.querySelector('#alert_delete').setAttribute("name","delete_categorie");
+
+  form_delete['id'].value = $id;
 }
 
 //___

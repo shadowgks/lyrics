@@ -5,9 +5,9 @@ class CategorieController
     //read
     function getAllCategorie()
     {
-        $id_admin = $_SESSION['Admin']['id'];
-        $data_categorie = Categorie::getAll($id_admin);
-        return $data_categorie;
+            $id_admin = $_SESSION['Admin']['id'];
+            $data_categorie = Categorie::getAll($id_admin);
+            return $data_categorie;
     }
     
     //create
@@ -60,23 +60,13 @@ class CategorieController
     //delete
     function deleteCategorie()
     {
-        //Check inputs form if empty
-        if(empty($_POST['name'])){
-            $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
-            header("location: dashboard");
-        }else{
-            $data = array(
-                'id'                => $_POST['id'],
-                'name_categorie'    => $_POST['name'][0],
-            );
-            $add = Categorie::delete($data);
-            if ($add === true) {
-                $_SESSION['Success'] = '';
-                header('location:dashboard');
-            } else {
-                $_SESSION['Failed'] = '';
-                header('location:dashboard');
-            }
+        $add = Categorie::delete($_POST['id']);
+        if ($add === true) {
+            $_SESSION['Success'] = '';
+            header('location:dashboard');
+        } else {
+            $_SESSION['Failed'] = '';
+            header('location:dashboard');
         }
     }
 }

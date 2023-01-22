@@ -6,7 +6,6 @@ class SignupController
     //create
     function signUpUser()
     {
-        
         //Check inputs form if empty
         if (empty($_POST['firstname'])
             || empty($_POST['lastname'])

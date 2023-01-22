@@ -71,4 +71,17 @@ class SongController{
             }
         }
     }
+
+    //delete
+    function deleteSong()
+    {
+        $add = Song::delete($_POST['id']);
+        if ($add === true) {
+            $_SESSION['Success'] = '';
+            header('location:dashboard');
+        } else {
+            $_SESSION['Failed'] = '';
+            header('location:dashboard');
+        }
+    }
 }
