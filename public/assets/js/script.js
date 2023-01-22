@@ -22,6 +22,7 @@ const form_artists = document.forms['form_artists'];
 const form_songs = document.forms['form_songs'];
 const form_categores = document.forms['form_categories'];
 const form_albums = document.forms['form_albums'];
+const form_delete = document.forms['form_delete'];
 
 //divs side form created
 const div_artists = document.querySelector('.div_artists');
@@ -162,8 +163,9 @@ btn_show_categories_add.addEventListener('click',()=>{
 
   //reset form
   form_categores.reset();
-});
 
+});
+//update
 function icon_btn_edit_categories(id,name){
   update_categorie.style.display = "block";
   save_categorie.style.display = "none";
@@ -191,7 +193,7 @@ btn_show_albums_add.addEventListener('click',()=>{
   //reset form
   form_albums.reset()
 });
-
+//edite
 function icon_btn_edit_albums(id,name){
   update_album.style.display = "block";
   save_album.style.display = "none";
@@ -199,6 +201,13 @@ function icon_btn_edit_albums(id,name){
 
   form_albums['id'].value = id; 
   form_albums['name[]'].value = name;
+}
+//delete
+function deleteAlbum($id){
+  document.querySelector('#alert_delete').removeAttribute("name");
+  document.querySelector('#alert_delete').setAttribute("name","delete_album");
+
+  form_delete['id'].value = $id;
 }
 
 //__

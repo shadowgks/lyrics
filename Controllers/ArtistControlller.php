@@ -34,4 +34,29 @@ class ArtistController{
             }
         }
     }
+
+    //update
+    function updateAlbum()
+    {
+        //Check inputs form if empty
+        if(empty($_POST['name'])){
+            $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
+            header("location: dashboard");
+        }else{
+            $data = array(
+                'id'                    => $_POST['id'],
+                'name_artist'           => $_POST['name'][0],
+                'picture'               => $_FILES['picture'],
+                'date_birthday_artist'  => $_POST['birthday_date'][0],
+            );
+            $add = Artist::update($data);
+            if ($add === true) {
+                $_SESSION['Success'] = '';
+                header('location:dashboard');
+            } else {
+                $_SESSION['Failed'] = '';
+                header('location:dashboard');
+            }
+        }
+    }
 }

@@ -54,11 +54,35 @@ class Song
         }
     }
 
-    //delete
-    static function delete($id)
+    //update
+    static function update($data)
     {
-        $stm = DB::connectDB()->prepare("DELETE FROM songs WHERE id = ?");
-        $exe = $stm->execute([$id]);
+        //Upload img
+        //img type
+        $type = $data['picture']['type'][0];
+        $split_type = substr($type, 6);
+        //-----------------------------------------------
+        //img tmp
+        $tmp_picture_name     = $data['picture']['tmp_name'][0];
+        //unique id img
+        $new_unique_name      = uniqid("artist.", true);
+        //check picture name
+        if (empty($data['picture']['name'][0])) {
+            $stm_picture = DB::connectDB()->prepare("SELECT picture FROM songs 
+            WHERE id = ?");
+            $stm_picture->execute([$data['id']]);
+            $data_picture = $stm_picture->fetch();
+            $distination_file = $data_picture['picture'];
+        } else {
+            $distination_file = 'public/assets/imgs/pictures_upload/new/artists/' . $new_unique_name . '.' . $split_type;
+        }
+        //Func upload picture
+        move_uploaded_file($tmp_picture_name, $distination_file);
+        //-----------------------------------------------
+        $stm = DB::connectDB()->prepare("UPDATE songs 
+        set name = ?, release_date = ?, lyrics = ?,picture = ?,id_artist = ?,id_cat= ? ,id_album = ?
+        WHERE id = ?");
+        $exe = $stm->execute([$data['name_song'], $data['release_date'], $data['lyrics'],$distination_file, $data['id_artist'], $data['id_cat'], $data['id_album'], $data['id']]);
         if ($exe) {
             return true;
         } else {
@@ -66,11 +90,12 @@ class Song
         }
     }
 
-    //update
-    static function update($data)
+    //delete
+    static function delete($id)
     {
-        $stm = DB::connectDB()->prepare("UPDATE songs set name = ? WHERE id = ?");
-        $exe = $stm->execute([$data['name'], $data['id']]);
+        $stm = DB::connectDB()->prepare("DELETE FROM songs 
+        WHERE id = ?");
+        $exe = $stm->execute([$id]);
         if ($exe) {
             return true;
         } else {

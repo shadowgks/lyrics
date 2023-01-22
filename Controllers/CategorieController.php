@@ -33,4 +33,50 @@ class CategorieController
             }
         }
     }
+
+    //update
+    function updateCategorie()
+    {
+        //Check inputs form if empty
+        if(empty($_POST['name'])){
+            $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
+            header("location: dashboard");
+        }else{
+            $data = array(
+                'id'                => $_POST['id'],
+                'name_categorie'    => $_POST['name'][0],
+            );
+            $add = Categorie::update($data);
+            if ($add === true) {
+                $_SESSION['Success'] = '';
+                header('location:dashboard');
+            } else {
+                $_SESSION['Failed'] = '';
+                header('location:dashboard');
+            }
+        }
+    }
+
+    //delete
+    function deleteCategorie()
+    {
+        //Check inputs form if empty
+        if(empty($_POST['name'])){
+            $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
+            header("location: dashboard");
+        }else{
+            $data = array(
+                'id'                => $_POST['id'],
+                'name_categorie'    => $_POST['name'][0],
+            );
+            $add = Categorie::delete($data);
+            if ($add === true) {
+                $_SESSION['Success'] = '';
+                header('location:dashboard');
+            } else {
+                $_SESSION['Failed'] = '';
+                header('location:dashboard');
+            }
+        }
+    }
 }

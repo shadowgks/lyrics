@@ -6,7 +6,8 @@ class Sign_up
     static function add($data)
     {
         //Req Sql 1
-        $stm = DB::connectDB()->prepare("SELECT * FROM `admins` WHERE `email` = ?");
+        $stm = DB::connectDB()->prepare("SELECT * FROM `admins` 
+        WHERE `email` = ?");
         $stm->execute([$data['email']]);
         $check_email = $stm->rowCount();
         //Execute sql query check num email on db
@@ -34,7 +35,8 @@ class Sign_up
             //-----------------------------------------------
 
             //Req Sql 2
-            $stm = DB::connectDB()->prepare("INSERT INTO `admins`(`firstName`, `lastName`, `date_birthday`, `email`, `password`, `picture`) VALUES (?,?,?,?,?,?)");
+            $stm = DB::connectDB()->prepare("INSERT INTO `admins`(`firstName`, `lastName`, `date_birthday`, `email`, `password`, `picture`) 
+            VALUES (?,?,?,?,?,?)");
             $exe = $stm->execute([$data['firstname'], $data['lastname'], $data['date_birthday'], $data['email'], $data['password'], $distination_file]);
             if ($exe) {
                 return true;

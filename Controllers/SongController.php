@@ -42,4 +42,33 @@ class SongController{
             }
         }
     }
+
+    //update
+    function updateSong()
+    {
+        //Check inputs form if empty
+        if(empty($_POST['name'])){
+            $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
+            header("location: dashboard");
+        }else{
+            $data = array(
+                'id'            => $_POST['id'],
+                'name_song'     => $_POST['name'][0],
+                'release_date'  => $_POST['release_date'][0],
+                'lyrics'        => $_POST['lyrics'][0],
+                'picture'       => $_FILES['picture'],
+                'id_artist'     => $_POST['artist'][0],
+                'id_cat'        => $_POST['categorie'][0],
+                'id_album'      => $_POST['album'][0],
+            );
+            $add = Song::update($data);
+            if ($add === true) {
+                $_SESSION['Success'] = '';
+                header('location:dashboard');
+            } else {
+                $_SESSION['Failed'] = '';
+                header('location:dashboard');
+            }
+        }
+    }
 }
