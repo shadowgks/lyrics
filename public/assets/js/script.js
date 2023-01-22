@@ -5,6 +5,8 @@ $(document).ready(function() {
     }).columns.adjust().responsive.recalc();
 });
 
+
+
 //++++++++++++++++++++++++++++++
 //Optimaze Modal form
 //Select Elements

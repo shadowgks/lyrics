@@ -93,13 +93,17 @@ class Song
     //delete
     static function delete($id)
     {
-        $stm = DB::connectDB()->prepare("DELETE FROM songs 
-        WHERE id = ?");
-        $exe = $stm->execute([$id]);
-        if ($exe) {
-            return true;
-        } else {
-            return false;
+        try {
+            $stm = DB::connectDB()->prepare("DELETE FROM songs 
+            WHERE id = ?");
+            $exe = $stm->execute([$id]);
+            if ($exe) {
+                return true;
+            } else {
+                return false;
+            }
+        }catch (Exception $e) {
+            echo 'and the error is: ',  $e->getMessage(), "\n";
         }
     }
 }

@@ -1,5 +1,4 @@
-Overrides for Tailwind CSS
-
+/* Overrides for Tailwind CSS */
 		/*Form fields*/
 		.dataTables_wrapper select,
 		.dataTables_wrapper .dataTables_filter input {
@@ -107,4 +106,9 @@ Overrides for Tailwind CSS
 		}
 		.dtr-details{
 			width: 100%;
+		}
+
+		/* ckeditor */
+		#cke_1_contents{
+			color: black;
 		}

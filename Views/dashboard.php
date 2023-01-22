@@ -18,14 +18,16 @@ if(!isset($_SESSION['Admin'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LYRICSONGS</title>
-
+    <!-- Begin ckeditor js -->
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+    <!-- End ckeditor js -->
+    <!-- ================================ -->
     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet" />
     <!--Replace with your tailwind.css once created-->
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" />
-
     <!-- ================================ -->
     <!-- Begin Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,6 +44,8 @@ if(!isset($_SESSION['Admin'])){
     <!-- Begin style css -->
     <link rel="stylesheet" href="public/assets/css/style.css" />
     <!-- End style css -->
+    <!-- ================================ -->
+    
 </head>
 
 <body class="dark:text-white dark:bg-gray-900">
@@ -70,13 +74,10 @@ if(!isset($_SESSION['Admin'])){
                     </button>
                     <ul id="dropdown-pages" class="hidden py-2 space-y-2">
                         <li>
+                            <a href="home" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Home</a>
+                        </li>
+                        <li>
                             <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Kanban</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Calendar</a>
                         </li>
                     </ul>
                 </li>
@@ -98,23 +99,20 @@ if(!isset($_SESSION['Admin'])){
                 <div class="flex items-center md:order-2">
                     <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+                        <img class="w-8 h-8 rounded-full" src="<?php echo $_SESSION['Admin']['picture']?>" alt="admin photo" />
                     </button>
                     <!-- Dropdown menu -->
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                         <div class="px-4 py-3">
-                            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                            <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                            <span class="block text-sm text-gray-900 dark:text-white"><?php echo $_SESSION['Admin']['firstName'].' '.$_SESSION['Admin']['lastName']?></span>
+                            <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"><?php echo $_SESSION['Admin']['email']?></span>
                         </div>
                         <ul class="py-1" aria-labelledby="user-menu-button">
                             <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                                <a href="dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                             </li>
                             <li>
                                 <a href="Views/LOGIN/sign_out.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
@@ -501,6 +499,7 @@ if(!isset($_SESSION['Admin'])){
         <!-- END DATATABLE -->
     </section>
     <!--END CONTENT -->
+    
 
 
     <!-- BEGIN Main modal artists -->
@@ -630,7 +629,8 @@ if(!isset($_SESSION['Admin'])){
                         </div>
                         <div class="sm:col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lyrics</label>
-                            <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write product description here" required></textarea>
+                            <!-- <textarea id="description" name="lyrics" required></textarea> -->
+                            <textarea id="lyrics_id" name="lyrics[]"></textarea>
                         </div>
                         <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
@@ -815,6 +815,11 @@ if(!isset($_SESSION['Admin'])){
     <!-- Begin file js -->
     <script src="public/assets/js/script.js"></script>
     <!-- End file js -->
+    <!-- BEGIN ckeditor -->
+    <script>
+        CKEDITOR.replace('lyrics_id');
+    </script>
+    <!-- END ckeditor -->
 </body>
 
 </html>

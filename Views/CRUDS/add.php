@@ -23,6 +23,6 @@ if (isset($_POST['save_album'])) {
 }
 //signup
 if (isset($_POST['save_signup'])) {
-    $obj_signup = new SignupController();
+    $obj_signup = new AdminController();
     $add_user = $obj_signup->signUpUser();
 }

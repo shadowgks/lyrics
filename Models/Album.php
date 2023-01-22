@@ -41,13 +41,18 @@ class Album{
 
     //delete
     static function delete($id){
-        $stm = DB::connectDB()->prepare("DELETE FROM albums 
-        WHERE id = ?");
-        $exe = $stm->execute([$id]);
-        if($exe){
-            return true;
-        }else{
-            return false;
+        try {
+            $stm = DB::connectDB()->prepare("DELETE FROM albums 
+            WHERE id = ?");
+            $exe = $stm->execute([$id]);
+            if($exe){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception $e) {
+            echo 'and the error is: ',  $e->getMessage(), "\n";
         }
+        
     } 
 }
