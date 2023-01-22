@@ -363,11 +363,8 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_admins == 0){
-                                    echo '0';
-                                }else{
-                                    echo $count_admins;
-                                } 
+
+                                echo $count_admins;
                             ?>
                         </p>
                     </div>
@@ -386,11 +383,7 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_artists == 0){
-                                    echo '0';
-                                }else{
-                                    echo $count_artists;
-                                } 
+                                echo $count_artists;
                             ?>
                         </p>
                     </div>
@@ -410,11 +403,7 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_songs == 0){
-                                    echo '0';
-                                }else{
-                                    echo $count_songs;
-                                } 
+                                echo $count_songs;
                             ?>
                         </p>
                     </div>
@@ -433,11 +422,7 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_categories == 0){
-                                    echo '0';
-                                }else{
-                                    echo $count_categories;
-                                } 
+                                echo $count_categories;
                             ?>
                         </p>
                     </div>
@@ -456,11 +441,7 @@ require_once 'CRUDS/sign_in.php';
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                if($count_albums == 0){
-                                    echo '0';
-                                }else{
-                                    echo $count_albums;
-                                } 
+                                echo $count_albums;
                             ?>
                         </p>
                     </div>
@@ -540,7 +521,7 @@ require_once 'CRUDS/sign_in.php';
                             $idA = 1;
                             foreach ($data_artists as $item) {
                                 echo '<input type="hidden" value="' . $item['id'] . '">
-                                    <tr>
+                                    <tr id="' . $item['id'] . '">
                                     <td>
                                         ' . $idA . '
                                     </td>
@@ -549,7 +530,8 @@ require_once 'CRUDS/sign_in.php';
                                     </td>
                                     <td> ' . $item['date_birthday'] . ' </td>
                                     <td>
-                                        <button type="button" data-modal-toggle="defaultModal1" id="btn_edit_artists"
+                                        <button type="button" data-modal-toggle="defaultModal1" id="btn_edit_artists" 
+                                        onclick="icon_btn_edit_artists(\''.$item['id']. '\',\''.$item['name']. '\',\''.$item['date_birthday'].'\')"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-pen-to-square"></i></button>
                                         <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
@@ -591,34 +573,37 @@ require_once 'CRUDS/sign_in.php';
                                 <th data-priority="4">lyrics</th>
                                 <th data-priority="5">Artist</th>
                                 <th data-priority="6">Album</th>
-                                <th data-priority="7">Actions</th>
+                                <th data-priority="7">cat</th>
+                                <th data-priority="8">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $idS = 1;
                             foreach ($data_songs as $item) {
-                                echo '<input type="hidden" value="' . $item['id'] . '">
+                                echo '
                                 <tr>
-                                <td>
-                                    ' . $idS . '
-                                </td>
-                                <td class="md:flex items-center">
-                                    <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
-                                </td>
-                                <td>' . $item['release_date'] . '</td>
-                                <td>' . $item['lyrics'] . '</td>
-                                <td>' . $item['name_artist'] . '</td>
-                                <td>' . $item['name_album'] . '</td>
-                                <td>
-                                    <button type="button" data-modal-toggle="defaultModal2" id="btn_edit_songs"
-                                        class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                            class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                            class="fa-solid fa-trash"></i></button>
-                                </td>
-                            </tr>';
+                                    <td>
+                                        ' . $idS . '
+                                    </td>
+                                    <td class="md:flex items-center">
+                                        <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
+                                    </td>
+                                    <td>' . $item['release_date'] . '</td>
+                                    <td>' . $item['lyrics'] . '</td>
+                                    <td>' . $item['name_artist'] . '</td>
+                                    <td>' . $item['name_album'] . '</td>
+                                    <td>' . $item['name_categorie'] . '</td>
+                                    <td>
+                                        <button type="button" data-modal-toggle="defaultModal2" id="btn_edit_songs" 
+                                        onclick="icon_btn_edit_songs(\''.$item['id']. '\',\''.$item['name']. '\',\''.$item['release_date'].'\',\''.$item['lyrics'].'\',\''.$item['id_artist'].'\',\''.$item['id_cat'].'\',\''.$item['id_album'].'\')"
+                                            class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                                class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>';
                                 $idS++;
                             }
                             ?>
@@ -655,19 +640,19 @@ require_once 'CRUDS/sign_in.php';
                             <?php
                             $idC = 1;
                             foreach ($data_categories as $item) {
-                                echo '<input type="hidden" value="' . $item['id'] . '">
+                                echo '
                                 <tr>
-                                <td>' . $idC . '</td>
-                                <td>' . $item['name'] . '</td>
-                                <td>
-                                    <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories"
-                                        class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                            class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                        class="fa-solid fa-trash"></i></button>
-                                </td>
-                            </tr>';
+                                    <td>' . $idC . '</td>
+                                    <td>' . $item['name'] . '</td>
+                                    <td>
+                                        <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories" onclick="icon_btn_edit_categories(\''.$item['id']. '\',\''.$item['name']. '\')"
+                                            class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                                class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>';
                                 $idC++;
                             }
                             ?>
@@ -703,19 +688,19 @@ require_once 'CRUDS/sign_in.php';
                             <?php
                             $idAlbum = 1;
                             foreach ($data_albums as $item) {
-                                echo '<input type="hidden" value="' . $item['id'] . '">
+                                echo '
                                 <tr>
-                                <td>' . $idAlbum . '</td>
-                                <td>' . $item['name'] . '</td>
-                                <td>
-                                    <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_albums"
-                                        class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                    <td>' . $idAlbum . '</td>
+                                    <td>' . $item['name'] . '</td>
+                                    <td>
+                                        <button type="button" data-modal-toggle="defaultModal4" id="btn_edit_albums" onclick="icon_btn_edit_albums(\''.$item['id']. '\',\''.$item['name']. '\')"
+                                            class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                        class="fa-solid fa-trash"></i></button>
-                                </td>
-                            </tr>';
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>';
                                 $idAlbum++;
                             }
                             ?>
@@ -750,6 +735,7 @@ require_once 'CRUDS/sign_in.php';
                 <!-- Modal body -->
                 <form action="" method="post" name="form_artists" enctype="multipart/form-data">
                     <div class="nodes_artist grid gap-4 mb-4 sm:grid-cols-2">
+                        <input type="text" name="id" hidden>
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                             <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
@@ -762,7 +748,7 @@ require_once 'CRUDS/sign_in.php';
                             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Birthday</label>
                             <input name="birthday_date[]" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="date birthday">
                         </div>
-                        <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
+                        <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
                     <div class="div_artists">
 
@@ -808,6 +794,7 @@ require_once 'CRUDS/sign_in.php';
                 <!-- Modal body -->
                 <form action="" method="post" name="form_songs" enctype="multipart/form-data">
                     <div class="nodes_song grid gap-4 mb-4 sm:grid-cols-2">
+                        <input type="text" name="id" hidden>
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                             <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
@@ -857,7 +844,7 @@ require_once 'CRUDS/sign_in.php';
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lyrics</label>
                             <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write product description here"></textarea>
                         </div>
-                        <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
+                        <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
 
                     <div class="div_songs">
@@ -904,12 +891,13 @@ require_once 'CRUDS/sign_in.php';
                 </div>
                 <!-- Modal body -->
                 <form action="" method="post" name="form_categories" enctype="multipart/form-data">
-                    <div class="nodes_categorie grid gap-4 mb-4 sm:grid-cols-2" id="inputs_form_id">
+                    <div class="nodes_categorie grid gap-4 mb-4 sm:grid-cols-1" id="inputs_form_id">
+                        <input type="text" name="id" hidden>
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                             <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
                         </div>
-                        <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
+                        <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
 
                     <div class="div_categories">
@@ -956,12 +944,13 @@ require_once 'CRUDS/sign_in.php';
                 </div>
                 <!-- Modal body -->
                 <form action="" method="post" name="form_albums" enctype="multipart/form-data">
-                    <div class="nodes_album grid gap-4 mb-4 sm:grid-cols-2" id="inputs_form_id">
+                    <div class="nodes_album grid gap-4 mb-4 sm:grid-cols-1" id="inputs_form_id">
+                        <input type="text" name="id" hidden>
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                             <input name="name[]" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name" required="">
                         </div>
-                        <hr class="h-1 my-4 bg-gray-100 border-0 rounded md:mt-10 dark:bg-orange-500 m-auto md:m-0">
+                        <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
 
                     <div class="div_albums">
@@ -1002,16 +991,20 @@ require_once 'CRUDS/sign_in.php';
                     </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
-                <div class="p-6 text-center">
-                    <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this item?</h3>
-                    <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                        Yes, I'm sure
-                    </button>
-                    <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
-                </div>
+                <form method="post">
+                    <div class="p-6 text-center">
+                        <input type="text" name="id" hidden>
+                        <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this item?</h3>
+                        <button data-modal-hide="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                            Yes, I'm sure
+                        </button>
+                        <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                    </div>
+                </form>
+                
             </div>
         </div>
     </div>
