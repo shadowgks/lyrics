@@ -1,7 +1,11 @@
 <?php
-require_once 'LOGIN/sign_in.php';
-?>
-<?php
+//Admins
+//signin
+if (isset($_POST['sign_in'])) {
+    $obj_signin = new AdminController();
+    $data_admins = $obj_signin->signIN();
+}
+
 if (isset($_SESSION['Admin'])) {
     header('location: dashboard');
 }
@@ -15,9 +19,6 @@ if (isset($_SESSION['Admin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LYRICSONGS</title>
 
-    <!-- Begin style css -->
-    <link rel="stylesheet" href="public/assets/css/style.css">
-    <!-- End style css -->
     <!-- ================================ -->
     <!-- Begin Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,6 +27,15 @@ if (isset($_SESSION['Admin'])) {
     <!-- Begin Flowbite css -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
     <!-- End Flowbite css -->
+    <!-- ================================ -->
+    <!-- BEGIN parsley css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
+    <!-- END parsley css-->
+    <!-- ================================ -->
+    <!-- Begin style css -->
+    <link rel="stylesheet" href="public/assets/css/style.css">
+    <!-- End style css -->
 </head>
 
 <body>
@@ -84,20 +94,20 @@ if (isset($_SESSION['Admin'])) {
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in to your account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" method="post">
+                    <form class="space-y-4 md:space-y-6" method="post" data-parsley-validate>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
-                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
+                            <input data-parsley-trigger="keyup" type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                            <input data-parsley-trigger="keyup" data-parsley-minlength="8" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                    <input id="orange-checkbox" type="checkbox" value="" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="orange-checkbox" type="checkbox" value="" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
                                 </div>
                                 <div class="ml-3 text-sm">
                                     <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
@@ -201,11 +211,20 @@ if (isset($_SESSION['Admin'])) {
     </footer>
     <!-- END footer -->
 
-
+    <!-- Begin jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- End jQuery -->
     <!-- ================================ -->
     <!-- Begin flowbite js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.js"></script>
     <!-- End flowbite js -->
+    <!-- ================================ -->
+    <!-- Begin file js -->
+    <script src="public/assets/js/script.js"></script>
+    <!-- End file js -->
+    <!-- BEGIN parsley js -->
+    <script src="public\assets\js\parsley.min.js"></script>
+    <!-- END parsley js-->
     <!-- ================================ -->
     <!-- Begin file js -->
     <script src="public/assets/js/script.js"></script>

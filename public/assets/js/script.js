@@ -135,7 +135,7 @@ btn_show_songs_add.addEventListener('click',()=>{
   update_song.style.display = "none";
 
   //reset form
-  form_songs.reset();
+  
 });
 
 

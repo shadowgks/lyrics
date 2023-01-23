@@ -3,7 +3,6 @@ require_once 'CRUDS/add.php';
 require_once 'CRUDS/delete.php';
 require_once 'CRUDS/read.php';
 require_once 'CRUDS/update.php';
-require_once 'LOGIN/sign_in.php';
 
 if (!isset($_SESSION['Admin'])) {
     header('location: signin');
@@ -38,11 +37,14 @@ if (!isset($_SESSION['Admin'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- End fontAwesome -->
     <!-- ================================ -->
+    <!-- BEGIN parsley css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
+    <!-- END parsley css-->
+    <!-- ================================ -->
     <!-- Begin style css -->
     <link rel="stylesheet" href="public/assets/css/style.css" />
     <!-- End style css -->
-
-    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <!-- ================================ -->
 
 </head>
@@ -525,7 +527,7 @@ if (!isset($_SESSION['Admin'])) {
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="" method="post" name="form_artists" enctype="multipart/form-data">
+                <form action="" method="post" name="form_artists" enctype="multipart/form-data" data-parsley-validate>
                     <div class="nodes_artist grid gap-4 mb-4 sm:grid-cols-2">
                         <input type="text" name="id" hidden>
                         <div>
@@ -584,7 +586,7 @@ if (!isset($_SESSION['Admin'])) {
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="" method="post" name="form_songs" enctype="multipart/form-data">
+                <form action="" method="post" name="form_songs" enctype="multipart/form-data" data-parsley-validate>
 
                     <div class="nodes_song grid gap-4 mb-4 sm:grid-cols-2">
                         <input type="text" name="id" hidden>
@@ -599,7 +601,7 @@ if (!isset($_SESSION['Admin'])) {
                         <div>
                             <label for="categorie" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorie</label>
                             <select name="categorie[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-                                <option disabled>Select categories</option>
+                                <option selected disabled>Select categories</option>
                                 <?php
                                 foreach ($data_categories as $categorie) {
                                     echo '<option value="' . $categorie['id'] . '">' . $categorie['name'] . '</option>';
@@ -610,7 +612,7 @@ if (!isset($_SESSION['Admin'])) {
                         <div>
                             <label for="artist" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
                             <select name="artist[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-                                <option disabled>Select artists</option>
+                                <option selected disabled>Select artists</option>
                                 <?php
                                 foreach ($data_artists as $artist) {
                                     echo '<option value="' . $artist['id'] . '">' . $artist['name'] . '</option>';
@@ -621,7 +623,7 @@ if (!isset($_SESSION['Admin'])) {
                         <div>
                             <label for="album" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
                             <select name="album[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-                                <option disabled>Select albums</option>
+                                <option selected disabled>Select albums</option>
                                 <?php
                                 foreach ($data_albums as $album) {
                                     echo '<option value="' . $album['id'] . '">' . $album['name'] . '</option>';
@@ -635,11 +637,7 @@ if (!isset($_SESSION['Admin'])) {
                         </div>
                         <div class="col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lyrics</label>
-                            <!-- <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write Lyrics here!" required></textarea> -->
-                            <textarea id="editor1" name="lyrics[]"></textarea>
-                            <script>
-                                CKEDITOR.replace('editor1');
-                            </script>
+                            <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write Lyrics here!" required></textarea>
                         </div>
                         <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
@@ -687,7 +685,7 @@ if (!isset($_SESSION['Admin'])) {
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="" method="post" name="form_categories" enctype="multipart/form-data">
+                <form action="" method="post" name="form_categories" enctype="multipart/form-data" data-parsley-validate>
                     <div class="nodes_categorie grid gap-4 mb-4 sm:grid-cols-1" id="inputs_form_id">
                         <input type="text" name="id" hidden>
                         <div>
@@ -740,7 +738,7 @@ if (!isset($_SESSION['Admin'])) {
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="" method="post" name="form_albums" enctype="multipart/form-data">
+                <form action="" method="post" name="form_albums" enctype="multipart/form-data" data-parsley-validate>
                     <div class="nodes_album grid gap-4 mb-4 sm:grid-cols-1" id="inputs_form_id">
                         <input type="text" name="id" hidden>
                         <div>
@@ -820,9 +818,13 @@ if (!isset($_SESSION['Admin'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.js"></script>
     <!-- End flowbite js -->
     <!-- ================================ -->
+    <!-- ================================ -->
+    <!-- BEGIN parsley js -->
+    <script src="public\assets\js\parsley.min.js"></script>
+    <!-- END parsley js-->
+    <!-- ================================ -->
     <!-- Begin file js -->
     <script src="public/assets/js/script.js"></script>
-    <script src="public/assets/js/getsongs.js"></script>
     <!-- End file js -->
 </body>
 

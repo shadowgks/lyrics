@@ -9,10 +9,10 @@ class SongController{
     }
     //__
     function getOneSongs(){
-        $id_admin = $_SESSION['Admin']['id'];
-        $id_song = $_SESSION['song_id'];
-        $data_songs = Song::getOneSongs($id_admin,$id_song);
-        return $data_songs;
+            $id_admin = $_SESSION['Admin']['id'];
+            $id_song = $_SESSION['song_id'];
+            $data_songs = Song::getOneSongs($id_admin,$id_song);
+            return $data_songs;
     }
 
     //create
