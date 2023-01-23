@@ -56,7 +56,7 @@ const update_song = document.querySelector('#update_song');
 let nodes_song = document.querySelector('.nodes_song');
 let div_to_coller_song;
 add_song.addEventListener('click',()=>{
-  div_to_coller_song.append(nodes_song.cloneNode(true));
+  div_to_coller_song.prepend(nodes_song.cloneNode(true));
 });
 
 //___
@@ -125,7 +125,7 @@ btn_show_songs_add.addEventListener('click',()=>{
   //Create another div
   div_to_coller_song = document.createElement('div');
   div_to_coller_song.setAttribute('class','anotherdiv_songs');
-  div_songs.append(div_to_coller_song);
+  div_songs.prepend(div_to_coller_song);
   
   opened_modal = 'songs';
 
@@ -137,6 +137,7 @@ btn_show_songs_add.addEventListener('click',()=>{
   //reset form
   form_songs.reset();
 });
+
 
 function icon_btn_edit_songs(id,name,release_date,lyrics,id_artist,id_cat,id_album){
   update_song.style.display = "block";
@@ -252,6 +253,3 @@ btn_close_all.forEach((item)=>{
     }
   })
 });
-
-
-

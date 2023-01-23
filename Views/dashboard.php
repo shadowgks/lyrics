@@ -41,6 +41,8 @@ if (!isset($_SESSION['Admin'])) {
     <!-- Begin style css -->
     <link rel="stylesheet" href="public/assets/css/style.css" />
     <!-- End style css -->
+
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <!-- ================================ -->
 
 </head>
@@ -583,6 +585,7 @@ if (!isset($_SESSION['Admin'])) {
                 </div>
                 <!-- Modal body -->
                 <form action="" method="post" name="form_songs" enctype="multipart/form-data">
+
                     <div class="nodes_song grid gap-4 mb-4 sm:grid-cols-2">
                         <input type="text" name="id" hidden>
                         <div>
@@ -632,14 +635,17 @@ if (!isset($_SESSION['Admin'])) {
                         </div>
                         <div class="col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lyrics</label>
-                            <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write Lyrics here!" required></textarea>
+                            <!-- <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write Lyrics here!" required></textarea> -->
+                            <textarea id="editor1" name="lyrics[]"></textarea>
+                            <script>
+                                CKEDITOR.replace('editor1');
+                            </script>
                         </div>
                         <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
-
-
+                    
                     <div class="div_songs">
-
+                        
                     </div>
                     <!-- btns -->
                     <div class="flex gap-3">

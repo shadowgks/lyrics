@@ -90,8 +90,8 @@ $data_one_songs = $obj_songs->getOneSongs();
                             <p class="text-base font-light text-gray-500 dark:text-gray-400">' . $song['name'] . '</p>
                             <p class="text-base font-light text-gray-500 dark:text-gray-400">' . $song['release_date'] . '</p>
                             <div class="flex space-x-2 mt-2 justify-center">
-                                <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-yellow-500 text-white rounded">' . $song['name_categorie'] . '</span>
-                                <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded">' . $song['name_album'] . '</span>
+                                <span class="rounded-full text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-blue-800 text-white">' . $song['name_categorie'] . '</span>
+                                <span class="rounded-full text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700">' . $song['name_album'] . '</span>
                             </div>
                         </div>
                     </div>
