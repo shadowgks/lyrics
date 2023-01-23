@@ -69,7 +69,7 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
             <a href="#" class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" role="alert">
-                <span class="text-xs bg-orange-500 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span class="text-sm font-medium">Flowbite is out! See what's new</span>
+                <span class="text-xs bg-orange-500 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span class="text-sm font-medium">Lyrics Songs is out! See what's new</span>
                 <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                 </svg>
@@ -77,8 +77,7 @@
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                 We invest in the world’s potential</h1>
             <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Here at
-                Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and
-                drive economic growth.</p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora vero magnam deserunt deleniti minus id exercitationem explicabo voluptas. Ex excepturi perferendis praesentium voluptatibus. Voluptas, a aperiam distinctio nostrum at sunt..</p>
             <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-orange-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                     Learn more
@@ -98,16 +97,16 @@
                 <span class="font-semibold text-gray-400 uppercase">FEATURED IN</span>
                 <div class="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-between">
                     <a href="#" class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="./assets/imgs/hero section/youtube-6.svg" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="youtube">
+                        <img src="public/assets/imgs/hero section/youtube-6.svg" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="youtube">
                     </a>
                     <a href="#" class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="./assets/imgs/hero section/spotify-1.svg" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="spotify">
+                        <img src="public/assets/imgs/hero section/spotify-1.svg" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="spotify">
                     </a>
                     <a href="#" class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="./assets/imgs/hero section/soundcloud-2.svg" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="soundcloud">
+                        <img src="public/assets/imgs/hero section/soundcloud-2.svg" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="soundcloud">
                     </a>
                     <a href="#" class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="./assets/imgs/hero section/Shazam_logo.svg.png" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="shazam">
+                        <img src="public/assets/imgs/hero section/Shazam_logo.svg.png" class="h-10 max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt="shazam">
                     </a>
                 </div>
             </div>
@@ -166,47 +165,6 @@
 
             <!-- Charts -->
             <div class="chart">
-                <h2 id="accordion-flush-heading-1">
-                    <button type="button" class="flex items-center justify-between w-full font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400" data-accordion-target="#accordion-flush-body-1" aria-expanded="false" aria-controls="accordion-flush-body-1">
-                        <!-- artist_song -->
-                        <div class="flex items-center">
-                            <h1 class="text-2xl text-gray-900 font-extrabold dark:text-white m-5">1</h1>
-                            <div class="flow-root">
-                                <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    <li class="py-3 sm:py-4">
-                                        <div class="flex items-center space-x-4">
-                                            <div class="flex-shrink-0">
-                                                <img class="w-12 h-12 rounded-full" src="./assets/imgs/songs/adele_hello.jpg">
-                                            </div>
-                                            <div class="flex-1 min-w-0">
-                                                <p class="text-sm font-extrabold text-gray-900 truncate dark:text-white">
-                                                    Adele
-                                                </p>
-                                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                                    Hello
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </h2>
-                <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                    <div class="py-5 font-light border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed
-                            using the Figma software so everything you see in the library has a design equivalent in our
-                            Figma file.</p>
-                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based
-                            on the utility classes from Tailwind CSS and components from Flowbite.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chart">
                 <h2 id="accordion-flush-heading-2">
                     <button type="button" class="flex items-center justify-between w-full font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
                         <!-- artist_song -->
@@ -239,15 +197,12 @@
                 </h2>
                 <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-3">
                     <div class="py-5 font-light border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed
-                            using the Figma software so everything you see in the library has a design equivalent in our
-                            Figma file.</p>
-                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based
-                            on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa obcaecati similique quas, corporis explicabo quidem non dolorum, distinctio, fugiat harum eos illo soluta pariatur vero incidunt molestias consequuntur quos architecto?.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">Lyrics page</a> based
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur numquam quasi qui nesciunt nobis voluptatem culpa dolores ab voluptatibus earum nostrum consequuntur, aspernatur quaerat necessitatibus libero dicta reprehenderit explicabo similique.</p>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
     <!--END accordion-->
@@ -260,13 +215,11 @@
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                    Payments tool for software companies</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From
-                    checkout to global sales tax compliance, companies around the world use Flowbite to simplify their
-                    payment stack.</p>
+                    Songs Vibes</h1>
+                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, veritatis neque qui eveniet mollitia doloremque ratione maiores velit labore facilis illum, aliquid dicta delectus nemo. Quaerat, illum esse? Iusto, modi!</p>
             </div>
             <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                <img src="./assets/imgs/wallpaperVibes.jpg">
+                <img src="public/assets/imgs/wallpaperVibes.jpg">
             </div>
         </div>
     </section>
@@ -286,17 +239,6 @@
                     </a>
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
-                        <ul class="text-gray-600 dark:text-gray-400">
-                            <li class="mb-4">
-                                <a href="https://flowbite.com" class="hover:underline">Flowbite</a>
-                            </li>
-                            <li>
-                                <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-                            </li>
-                        </ul>
-                    </div>
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                         <ul class="text-gray-600 dark:text-gray-400">

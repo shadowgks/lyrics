@@ -2,11 +2,10 @@
 require_once 'CRUDS/add.php';
 require_once 'CRUDS/delete.php';
 require_once 'CRUDS/read.php';
-require_once 'CRUDS/search.php';
 require_once 'CRUDS/update.php';
 require_once 'LOGIN/sign_in.php';
 
-if(!isset($_SESSION['Admin'])){
+if (!isset($_SESSION['Admin'])) {
     header('location: signin');
 }
 ?>
@@ -18,9 +17,7 @@ if(!isset($_SESSION['Admin'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LYRICSONGS</title>
-    <!-- Begin ckeditor js -->
-    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
-    <!-- End ckeditor js -->
+
     <!-- ================================ -->
     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet" />
     <!--Replace with your tailwind.css once created-->
@@ -45,7 +42,7 @@ if(!isset($_SESSION['Admin'])){
     <link rel="stylesheet" href="public/assets/css/style.css" />
     <!-- End style css -->
     <!-- ================================ -->
-    
+
 </head>
 
 <body class="dark:text-white dark:bg-gray-900">
@@ -99,13 +96,13 @@ if(!isset($_SESSION['Admin'])){
                 <div class="flex items-center md:order-2">
                     <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="<?php echo $_SESSION['Admin']['picture']?>" alt="admin photo" />
+                        <img class="w-8 h-8 rounded-full" src="<?php echo $_SESSION['Admin']['picture'] ?>" alt="admin photo" />
                     </button>
                     <!-- Dropdown menu -->
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                         <div class="px-4 py-3">
-                            <span class="block text-sm text-gray-900 dark:text-white"><?php echo $_SESSION['Admin']['firstName'].' '.$_SESSION['Admin']['lastName']?></span>
-                            <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"><?php echo $_SESSION['Admin']['email']?></span>
+                            <span class="block text-sm text-gray-900 dark:text-white"><?php echo $_SESSION['Admin']['firstName'] . ' ' . $_SESSION['Admin']['lastName'] ?></span>
+                            <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"><?php echo $_SESSION['Admin']['email'] ?></span>
                         </div>
                         <ul class="py-1" aria-labelledby="user-menu-button">
                             <li>
@@ -150,7 +147,7 @@ if(!isset($_SESSION['Admin'])){
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
 
-                                echo $count_admins;
+                            echo $count_admins;
                             ?>
                         </p>
                     </div>
@@ -169,7 +166,7 @@ if(!isset($_SESSION['Admin'])){
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                echo $count_artists;
+                            echo $count_artists;
                             ?>
                         </p>
                     </div>
@@ -189,7 +186,7 @@ if(!isset($_SESSION['Admin'])){
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                echo $count_songs;
+                            echo $count_songs;
                             ?>
                         </p>
                     </div>
@@ -208,7 +205,7 @@ if(!isset($_SESSION['Admin'])){
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                echo $count_categories;
+                            echo $count_categories;
                             ?>
                         </p>
                     </div>
@@ -227,7 +224,7 @@ if(!isset($_SESSION['Admin'])){
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                             <?php
-                                echo $count_albums;
+                            echo $count_albums;
                             ?>
                         </p>
                     </div>
@@ -266,7 +263,7 @@ if(!isset($_SESSION['Admin'])){
                                 <tr>
                                     <td>' . $idA . '</td>
                                     <td class="md:flex items-center">
-                                        <img class="w-12 h-12 rounded-full" src="'.$admin['picture'].'" alt="#"> <span class="ml-2" truncate>' . $admin['firstName'] . ' ' . $admin['lastName'] . '</span>
+                                        <img class="w-12 h-12 rounded-full" src="' . $admin['picture'] . '" alt="#"> <span class="ml-2" truncate>' . $admin['firstName'] . ' ' . $admin['lastName'] . '</span>
                                     </td>
                                 <td>' . $admin['email'] . '</td>
                             </tr>';
@@ -317,10 +314,10 @@ if(!isset($_SESSION['Admin'])){
                                     <td> ' . $item['date_birthday'] . ' </td>
                                     <td>
                                         <button type="button" data-modal-toggle="defaultModal1" id="btn_edit_artists" 
-                                        onclick="icon_btn_edit_artists(\''.$item['id']. '\',\''.$item['name']. '\',\''.$item['date_birthday'].'\')"
+                                        onclick="icon_btn_edit_artists(\'' . $item['id'] . '\',\'' . $item['name'] . '\',\'' . $item['date_birthday'] . '\')"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteArtist(\''.$item['id']. '\');
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteArtist(\'' . $item['id'] . '\');
                                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -376,18 +373,24 @@ if(!isset($_SESSION['Admin'])){
                                         <img class="w-12 h-12 rounded-full" src="' . $item['picture'] . '" alt="#"> <span class="ml-2">' . $item['name'] . '</span>
                                     </td>
                                     <td>' . $item['release_date'] . '</td>
-                                    <td class="text-ellipsis overflow-hidden flex">' . $item['lyrics'] . '</td>
+                                    <td>. . .</td>
                                     <td>' . $item['name_artist'] . '</td>
                                     <td>' . $item['name_album'] . '</td>
                                     <td>' . $item['name_categorie'] . '</td>
                                     <td>
+                                        <a href="profilesong?song=' . $item['id'] . '"
+                                        class="text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                        <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        
                                         <button type="button" data-modal-toggle="defaultModal2" id="btn_edit_songs" 
-                                        onclick="icon_btn_edit_songs(\''.$item['id']. '\',\''.$item['name']. '\',\''.$item['release_date'].'\',\''.$item['lyrics'].'\',\''.$item['id_artist'].'\',\''.$item['id_cat'].'\',\''.$item['id_album'].'\')"
-                                            class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                                class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteSong(\''.$item['id']. '\');
-                                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
-                                                class="fa-solid fa-trash"></i></button>
+                                        onclick="icon_btn_edit_songs(\'' . $item['id'] . '\',\'' . $item['name'] . '\',\'' . $item['release_date'] . '\',\'' . $item['lyrics'] . '\',\'' . $item['id_artist'] . '\',\'' . $item['id_cat'] . '\',\'' . $item['id_album'] . '\')"
+                                        class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                        class="fa-solid fa-pen-to-square"></i></button>
+
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteSong(\'' . $item['id'] . '\');
+                                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
+                                        class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>';
                                 $idS++;
@@ -431,10 +434,10 @@ if(!isset($_SESSION['Admin'])){
                                     <td>' . $idC . '</td>
                                     <td>' . $item['name'] . '</td>
                                     <td>
-                                        <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories" onclick="icon_btn_edit_categories(\''.$item['id']. '\',\''.$item['name']. '\')"
+                                        <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories" onclick="icon_btn_edit_categories(\'' . $item['id'] . '\',\'' . $item['name'] . '\')"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteCategorie(\''.$item['id']. '\');
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteCategorie(\'' . $item['id'] . '\');
                                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -479,10 +482,10 @@ if(!isset($_SESSION['Admin'])){
                                     <td>' . $idAlbum . '</td>
                                     <td>' . $item['name'] . '</td>
                                     <td>
-                                        <button type="button" data-modal-toggle="defaultModal4" id="btn_edit_albums" onclick="icon_btn_edit_albums(\''.$item['id']. '\',\''.$item['name']. '\')"
+                                        <button type="button" data-modal-toggle="defaultModal4" id="btn_edit_albums" onclick="icon_btn_edit_albums(\'' . $item['id'] . '\',\'' . $item['name'] . '\')"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick="deleteAlbum(\''.$item['id']. '\')"
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick="deleteAlbum(\'' . $item['id'] . '\')"
                                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -499,7 +502,7 @@ if(!isset($_SESSION['Admin'])){
         <!-- END DATATABLE -->
     </section>
     <!--END CONTENT -->
-    
+
 
 
     <!-- BEGIN Main modal artists -->
@@ -627,13 +630,13 @@ if(!isset($_SESSION['Admin'])){
                             <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Release Date</label>
                             <input name="release_date[]" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="date release" required>
                         </div>
-                        <div class="sm:col-span-2">
+                        <div class="col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lyrics</label>
-                            <!-- <textarea id="description" name="lyrics" required></textarea> -->
-                            <textarea id="lyrics_id" name="lyrics[]"></textarea>
+                            <textarea id="description" name="lyrics[]" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write Lyrics here!" required></textarea>
                         </div>
                         <hr class="col-span-2 h-1 my-4 bg-gray-100 border-0 rounded dark:bg-orange-500 px-6">
                     </div>
+
 
                     <div class="div_songs">
 
@@ -792,7 +795,7 @@ if(!isset($_SESSION['Admin'])){
                         <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -813,6 +816,7 @@ if(!isset($_SESSION['Admin'])){
     <!-- ================================ -->
     <!-- Begin file js -->
     <script src="public/assets/js/script.js"></script>
+    <script src="public/assets/js/getsongs.js"></script>
     <!-- End file js -->
 </body>
 

@@ -7,6 +7,13 @@ class SongController{
         $data_songs = Song::getAll($id_admin);
         return $data_songs;
     }
+    //__
+    function getOneSongs(){
+        $id_admin = $_SESSION['Admin']['id'];
+        $id_song = $_SESSION['song_id'];
+        $data_songs = Song::getOneSongs($id_admin,$id_song);
+        return $data_songs;
+    }
 
     //create
     function addSong()

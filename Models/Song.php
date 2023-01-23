@@ -21,6 +21,22 @@ class Song
         );
         return $data_CF;
     }
+    //___
+    static function getOneSongs($id_admin,$id_song)
+    {
+        $stm = db::connectDB()->prepare("SELECT songs.*,
+        artists.name AS 'name_artist',
+        categories.name AS 'name_categorie',
+        albums.name as 'name_album'
+        FROM songs join artists join categories join albums
+        on songs.id_artist = artists.id 
+        and songs.id_cat = categories.id
+        and songs.id_album = albums.id
+        where songs.id_admin = '$id_admin'
+        and songs.id = '$id_song'");
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 
     //create
     static function add($data)

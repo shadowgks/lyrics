@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION['Admin'])) {
+    header('location: signin');
+}
+
+$_SESSION['song_id'] = explode("=", $_SERVER['REQUEST_URI'])[1];
+
+$obj_songs = new SongController();
+$data_one_songs = $obj_songs->getOneSongs();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,13 +39,13 @@
                 <img src="public/assets/imgs/logo/lyrics_song.png" class="h-20 sm:h-20" alt="Logo" />
             </a>
             <div class="flex md:order-2">
-                <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                <a href="signup" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         SIGN UP
                     </span>
-                </button>
-                <button type="button" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">SIGN
-                    IN</button>
+                </a>
+                <a href="signin" type="button" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">SIGN
+                    IN</a>
                 <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -67,20 +77,24 @@
 
     <!-- ================== -->
     <!--BEGIN profile song-->
-    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 dark:text-white">
+    <?php foreach ($data_one_songs as $song) {
+        echo '
+        <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 dark:text-white">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 lg:mb-6 not-format">
-                    <address class="flex items-center mb-6 not-italic">
-                        <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full" src="./assets/imgs/songs/adele_hello.jpg" alt="Jese Leos">
-                            <div>
-                                <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">Adele</a>
-                                <p class="text-base font-light text-gray-500 dark:text-gray-400">Hello</p>
-                                <p class="text-base font-light text-gray-500 dark:text-gray-400">Feb. 8, 2013</p>
+                    <div class="inline-flex items-center mb-10 mr-3 text-sm text-gray-900 dark:text-white">
+                        <img class="mr-4 w-16 h-16 rounded-full" src="' . $song['picture'] . '" alt="Jese Leos">
+                        <div>
+                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">' . $song['name_artist'] . '</a>
+                            <p class="text-base font-light text-gray-500 dark:text-gray-400">' . $song['name'] . '</p>
+                            <p class="text-base font-light text-gray-500 dark:text-gray-400">' . $song['release_date'] . '</p>
+                            <div class="flex space-x-2 mt-2 justify-center">
+                                <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-yellow-500 text-white rounded">' . $song['name_categorie'] . '</span>
+                                <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded">' . $song['name_album'] . '</span>
                             </div>
                         </div>
-                    </address>
+                    </div>
                     <h1 class="text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white text-center sm:text-start">
                         LYRICS SONG</h1>
                     <hr class="w-48 h-1 mt-4 bg-gray-100 border-0 rounded md:mt-4 dark:bg-orange-500 m-auto sm:m-0">
@@ -92,249 +106,15 @@
                     </svg>
                     <div class="lyrics">
                         <!-- indeed fix this probleme br -->
-                        Hello, it's me
-                        I was wondering if after all these years you'd like to meet
-                        To go over everything
-                        They say that time's supposed to heal ya
-                        But I ain't done much healing
-                        Hello, can you hear me?
-                        I'm in California dreaming about who we used to be
-                        When we were younger and free
-                        I've forgotten how it felt
-                        Before the world fell at our feet
-
-                        There's such a difference between us
-                        And a million miles
-
-                        Hello from the other side
-                        I must have called a thousand times
-                        To tell you I'm sorry for everything that I've done
-                        But when I call you never seem to be home
-                        Hello from the outside
-                        At least I can say that I've tried
-                        To tell you I'm sorry for breaking your heart
-                        But it don't matter, it clearly doesn't tear you apart
-                        Anymore
-
-                        Hello, how are you?
-                        It's so typical of me to talk about myself, I'm sorry
-                        I hope that you're well
-                        Did you ever make it out of that town
-                        Where nothing ever happened?
-
-                        It's no secret that the both of us
-                        Are running out of time
-
-                        So hello from the other side (other side)
-                        I must have called a thousand times (thousand times)
-                        To tell you I'm sorry for everything that I've done
-                        But when I call you never seem to be home
-                        Hello from the outside (outside)
-                        At least I can say that I've tried (I've tried)
-                        To tell you I'm sorry for breaking your heart
-                        But it don't matter, it clearly doesn't tear you apart
-                        Anymore
-
-                        (Highs, highs, highs, highs, lows, lows, lows, lows)
-                        Anymore
-                        (Highs, highs, highs, highs, lows, lows, lows, lows)
-                        Anymore
-                        (Highs, highs, highs, highs, lows, lows, lows, lows)
-                        Anymore
-                        (Highs, highs, highs, highs, lows, lows, lows, lows)
-                        Anymore
-
-                        Hello from the other side (other side)
-                        I must have called a thousand times (thousand times)
-                        To tell you I'm sorry for everything that I've done
-                        But when I call you never seem to be home
-                        Hello from the outside (outside)
-                        At least I can say that I've tried (I've tried)
-                        To tell you I'm sorry for breaking your heart
-                        But it don't matter, it clearly doesn't tear you apart
-                        Anymore
+                        ' . $song['lyrics'] . '
                     </div>
-                    <p>Flowbite is just awesome. It contains tons of predesigned components and pages starting from
-                        login screen to complex dashboard. Perfect choice for your next SaaS application.</p>
                 </section>
                 <!-- END lyrics -->
-                <section class="not-format">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (20)</h2>
-                    </div>
-                    <form class="mb-6">
-                        <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                            <label for="comment" class="sr-only">Your comment</label>
-                            <textarea id="comment" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Write a comment..." required></textarea>
-                        </div>
-                        <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                            Post comment
-                        </button>
-                    </form>
-                    <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
-                        <footer class="flex justify-between items-center mb-2">
-                            <div class="flex items-center">
-                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Michael Gough">Michael Gough</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
-                            </div>
-                            <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                    </path>
-                                </svg>
-                                <span class="sr-only">Comment settings</span>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="dropdownComment1" class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </footer>
-                        <p>Very straight-to-point article. Really worth time reading. Thank you! But tools are just the
-                            instruments for the UX designers. The knowledge of the design tools are as important as the
-                            creation of the design strategy.</p>
-                        <div class="flex items-center mt-4 space-x-4">
-                            <button type="button" class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
-                                <svg aria-hidden="true" class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                                    </path>
-                                </svg>
-                                Reply
-                            </button>
-                        </div>
-                    </article>
-                    <article class="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-lg dark:bg-gray-900">
-                        <footer class="flex justify-between items-center mb-2">
-                            <div class="flex items-center">
-                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Jese Leos">Jese Leos</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-12" title="February 12th, 2022">Feb. 12, 2022</time></p>
-                            </div>
-                            <button id="dropdownComment2Button" data-dropdown-toggle="dropdownComment2" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                    </path>
-                                </svg>
-                                <span class="sr-only">Comment settings</span>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="dropdownComment2" class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </footer>
-                        <p>Much appreciated! Glad you liked it ☺️</p>
-                        <div class="flex items-center mt-4 space-x-4">
-                            <button type="button" class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
-                                <svg aria-hidden="true" class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                                    </path>
-                                </svg>
-                                Reply
-                            </button>
-                        </div>
-                    </article>
-                    <article class="p-6 mb-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                        <footer class="flex justify-between items-center mb-2">
-                            <div class="flex items-center">
-                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="Bonnie Green">Bonnie Green</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-03-12" title="March 12th, 2022">Mar. 12, 2022</time></p>
-                            </div>
-                            <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                    </path>
-                                </svg>
-                                <span class="sr-only">Comment settings</span>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="dropdownComment3" class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </footer>
-                        <p>The article covers the essentials, challenges, myths and stages the UX designer should
-                            consider while creating the design strategy.</p>
-                        <div class="flex items-center mt-4 space-x-4">
-                            <button type="button" class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
-                                <svg aria-hidden="true" class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                                    </path>
-                                </svg>
-                                Reply
-                            </button>
-                        </div>
-                    </article>
-                    <article class="p-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                        <footer class="flex justify-between items-center mb-2">
-                            <div class="flex items-center">
-                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-4.jpg" alt="Helene Engels">Helene Engels</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-06-23" title="June 23rd, 2022">Jun. 23, 2022</time></p>
-                            </div>
-                            <button id="dropdownComment4Button" data-dropdown-toggle="dropdownComment4" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="dropdownComment4" class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </footer>
-                        <p>Thanks for sharing this. I do came from the Backend development and explored some of the
-                            tools to design my Side Projects.</p>
-                        <div class="flex items-center mt-4 space-x-4">
-                            <button type="button" class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
-                                <svg aria-hidden="true" class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                                    </path>
-                                </svg>
-                                Reply
-                            </button>
-                        </div>
-                    </article>
-                </section>
             </article>
         </div>
     </main>
-    <!--END profile song-->
+        ';
+    } ?>
 
 
     <!-- ================== -->

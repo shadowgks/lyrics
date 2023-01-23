@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_SESSION['Admin'])){
+if (isset($_SESSION['Admin'])) {
     //Artists 
     $obj_artists = new ArtistController();
     $data_array_artists = $obj_artists->getAllArtists();
@@ -25,5 +25,4 @@ if(isset($_SESSION['Admin'])){
     $count_albums = $data_array_albums['count'];
     $data_albums = $data_array_albums['fetch_all'];
 }
-    
 

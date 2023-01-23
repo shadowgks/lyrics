@@ -2,7 +2,7 @@
 require_once 'LOGIN/sign_in.php';
 ?>
 <?php
-if(isset($_SESSION['Admin'])){
+if (isset($_SESSION['Admin'])) {
     header('location: dashboard');
 }
 ?>

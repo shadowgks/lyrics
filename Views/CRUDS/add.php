@@ -7,7 +7,6 @@ if (isset($_POST['save_categorie'])) {
 }
 //Artists
 if (isset($_POST['save_artist'])) {
-
     $obj_artist = new ArtistController();
     $add_artist = $obj_artist->addArtist();
 }
