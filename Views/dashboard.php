@@ -349,10 +349,10 @@ if (!isset($_SESSION['Admin'])) {
                                     <td> ' . $item['date_birthday'] . ' </td>
                                     <td>
                                         <button type="button" data-modal-toggle="defaultModal1" id="btn_edit_artists" 
-                                        onclick="icon_btn_edit_artists(\'' . $item['id'] . '\',\'' . $item['name'] . '\',\'' . $item['date_birthday'] . '\')"
+                                        onclick="icon_btn_edit_artists(`' . $item['id'] . '`,`' . $item['name'] . '`,`' . $item['date_birthday'] . '`)"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteArtist(\'' . $item['id'] . '\');
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteArtist(`' . $item['id'] . '`);
                                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -419,11 +419,11 @@ if (!isset($_SESSION['Admin'])) {
                                         </a>
                                         
                                         <button type="button" data-modal-toggle="defaultModal2" id="btn_edit_songs" 
-                                        onclick="icon_btn_edit_songs(\'' . $item['id'] . '\',\'' . $item['name'] . '\',\'' . $item['release_date'] . '\',`' . $item['lyrics'] . '`,\'' . $item['id_artist'] . '\',\'' . $item['id_cat'] . '\',\'' . $item['id_album'] . '\')"
+                                        onclick="icon_btn_edit_songs(`' . $item['id'] . '`,`' . $item['name'] . '`,`' . $item['release_date'] . '`,`' . $item['lyrics'] . '`,`' . $item['id_artist'] . '`,`' . $item['id_cat'] . '`,`' . $item['id_album'] . '`)"
                                         class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                         class="fa-solid fa-pen-to-square"></i></button>
 
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteSong(\'' . $item['id'] . '\');
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteSong(`' . $item['id'] . '`);
                                         class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                         class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -469,10 +469,10 @@ if (!isset($_SESSION['Admin'])) {
                                     <td>' . $idC . '</td>
                                     <td>' . $item['name'] . '</td>
                                     <td>
-                                        <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories" onclick="icon_btn_edit_categories(\'' . $item['id'] . '\',\'' . $item['name'] . '\')"
+                                        <button type="button" data-modal-toggle="defaultModal3" id="btn_edit_categories" onclick="icon_btn_edit_categories(`' . $item['id'] . '`,`' . $item['name'] . '`)"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                                 class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteCategorie(\'' . $item['id'] . '\');
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick=deleteCategorie(`' . $item['id'] . '`);
                                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -517,10 +517,10 @@ if (!isset($_SESSION['Admin'])) {
                                     <td>' . $idAlbum . '</td>
                                     <td>' . $item['name'] . '</td>
                                     <td>
-                                        <button type="button" data-modal-toggle="defaultModal4" id="btn_edit_albums" onclick="icon_btn_edit_albums(\'' . $item['id'] . '\',\'' . $item['name'] . '\')"
+                                        <button type="button" data-modal-toggle="defaultModal4" id="btn_edit_albums" onclick="icon_btn_edit_albums(`' . $item['id'] . '`,`' . $item['name'] . '`)"
                                             class="edit_show_modal text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick="deleteAlbum(\'' . $item['id'] . '\')"
+                                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick="deleteAlbum(`' . $item['id'] . '`)"
                                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><i
                                             class="fa-solid fa-trash"></i></button>
                                     </td>
