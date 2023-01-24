@@ -26,7 +26,7 @@ class ArtistController{
             );
             $add = Artist::add($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'ok';
                 header('location: dashboard');
             } else {
                 $_SESSION['Failed'] = '';

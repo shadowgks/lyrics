@@ -26,7 +26,7 @@ class AdminController{
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Failed sign up try again';
                 header('location:signin');
             }
         }
