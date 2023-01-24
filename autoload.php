@@ -24,7 +24,6 @@ function autoload($class_name){
         'Database/',
         'Controllers/',
         'Models/',
-        'App/Classes/',
     );
 
     $path = explode("'\'", $class_name);

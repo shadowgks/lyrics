@@ -28,7 +28,7 @@ class AdminController
             $read = Admin::sign_In($data);
 
             if ($read === true) {
-                $_SESSION['Success'] = 'Hello dear ' . $_SESSION['Admin']['firstName'] . ' ' . $_SESSION['Admin']['lasrName'] . '';
+                $_SESSION['Success'] = 'Hello dear ' . $_SESSION['Admin']['firstName'] . ' ' . $_SESSION['Admin']['lastName'] . '';
                 header('location:dashboard');
                 die;
             } else {
