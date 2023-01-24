@@ -124,6 +124,7 @@ if (isset($_SESSION['Admin'])) {
                     <div class="ml-3 text-sm font-medium">
                         <?php
                         echo $_SESSION['Failed'];
+                        unset($_SESSION['Failed']);
                         ?>
                     </div>
                     <button type="button"

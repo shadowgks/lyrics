@@ -43,9 +43,11 @@ class SongController{
             if ($add === true) {
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location:dashboard');
+                die;
             }
         }
     }
@@ -72,9 +74,11 @@ class SongController{
             if ($add === true) {
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location:dashboard');
+                die;
             }
         }
     }
@@ -86,9 +90,11 @@ class SongController{
         if ($add === true) {
             $_SESSION['Success'] = '';
             header('location:dashboard');
+            die;
         } else {
             $_SESSION['Failed'] = '';
             header('location:dashboard');
+            die;
         }
     }
 }

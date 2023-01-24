@@ -25,9 +25,11 @@ class AdminController{
             if ($read === true) {
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = 'Failed sign up try again';
                 header('location:signin');
+                die;
             }
         }
     }
@@ -58,9 +60,11 @@ class AdminController{
             if ($add === true) {
                 $_SESSION['Success'] = '';
                 header('location:signin');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location:signup');
+                die;
             }
         }
     }

@@ -1,11 +1,13 @@
 <?php
 
-class ArtistController{
+class ArtistController
+{
     //read
-    function getAllArtists(){
-            $id_admin = $_SESSION['Admin']['id'];
-            $data_artists = Artist::getAll($id_admin);
-            return $data_artists;
+    function getAllArtists()
+    {
+        $id_admin = $_SESSION['Admin']['id'];
+        $data_artists = Artist::getAll($id_admin);
+        return $data_artists;
     }
 
     //create
@@ -13,11 +15,13 @@ class ArtistController{
     {
         $id_admin = $_SESSION['Admin']['id'];
         //Check inputs form if empty
-        if(empty($_POST['name'])
-        || empty($_POST['birthday_date'])){
+        if (
+            empty($_POST['name'])
+            || empty($_POST['birthday_date'])
+        ) {
             $_SESSION['Failed'] = "Something is wrong please try again in table Categories!";
             header("location: dashboard");
-        }else{
+        } else {
             $data = array(
                 'name_artist' => $_POST['name'],
                 'picture' => $_FILES['picture'],
@@ -28,9 +32,11 @@ class ArtistController{
             if ($add === true) {
                 $_SESSION['Success'] = 'ok';
                 header('location: dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location: dashboard');
+                die;
             }
         }
     }
@@ -39,10 +45,10 @@ class ArtistController{
     function updateAlbum()
     {
         //Check inputs form if empty
-        if(empty($_POST['name'])){
+        if (empty($_POST['name'])) {
             $_SESSION['Failed'] = "something is wrong please try again in table Songs!";
             header("location: dashboard");
-        }else{
+        } else {
             $data = array(
                 'id'                    => $_POST['id'],
                 'name_artist'           => $_POST['name'][0],
@@ -53,9 +59,11 @@ class ArtistController{
             if ($add === true) {
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location:dashboard');
+                die;
             }
         }
     }
@@ -67,9 +75,11 @@ class ArtistController{
         if ($add === true) {
             $_SESSION['Success'] = '';
             header('location:dashboard');
+            die;
         } else {
             $_SESSION['Failed'] = '';
             header('location:dashboard');
+            die;
         }
     }
 }

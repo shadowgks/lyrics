@@ -255,6 +255,7 @@ if (!isset($_SESSION['Admin'])) {
                     <div class="ml-3 text-sm font-medium">
                         <?php
                         echo $_SESSION['Failed'];
+                        unset($_SESSION['Failed']);
                         ?>
                     </div>
                     <button type="button"
@@ -278,6 +279,7 @@ if (!isset($_SESSION['Admin'])) {
             <div class="ml-3 text-sm font-medium">
               <?php 
               echo $_SESSION['Success'];
+              unset($_SESSION['Success']);
               ?>
             </div>
             <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-green-300 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">

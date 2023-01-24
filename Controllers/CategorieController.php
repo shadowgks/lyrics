@@ -27,9 +27,11 @@ class CategorieController
             if ($add === true) {
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location:dashboard');
+                die;
             }
         }
     }
@@ -50,9 +52,11 @@ class CategorieController
             if ($add === true) {
                 $_SESSION['Success'] = '';
                 header('location:dashboard');
+                die;
             } else {
                 $_SESSION['Failed'] = '';
                 header('location:dashboard');
+                die;
             }
         }
     }
@@ -64,9 +68,11 @@ class CategorieController
         if ($add === true) {
             $_SESSION['Success'] = '';
             header('location:dashboard');
+            die;
         } else {
             $_SESSION['Failed'] = '';
             header('location:dashboard');
+            die;
         }
     }
 }
