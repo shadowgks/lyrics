@@ -1,4 +1,4 @@
-<?php 
+<?php
 // define("DS",DIRECTORY_SEPARATOR);
 // define("ROOT_PATH",dirname(__DIR__).DS);
 // define("APP",ROOT_PATH.'App'.DS);
@@ -19,19 +19,19 @@
 session_start();
 
 spl_autoload_register('autoload');
-function autoload($class_name){
+function autoload($class_name)
+{
     $path_array = array(
         'Database/',
         'Controllers/',
         'Models/',
     );
 
-    $path = explode("'\'", $class_name);
-    $name = array_pop($path);
-    
-    foreach($path_array as $item){ 
-        $file = sprintf($item.'%s.php',$name);
-        if(is_file($file)){
+    foreach ($path_array as $item) {
+        // $file = sprintf($item . '%s.php', $class_name);
+        $file = $item . $class_name . '.php';
+        // var_dump($file);
+        if (is_file($file)) {
             include $file;
         }
     }
