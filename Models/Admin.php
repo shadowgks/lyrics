@@ -40,7 +40,7 @@ class Admin
         //Execute sql query check num email on db
         if ($check_email > 0) {
             $_SESSION['Failed'] = "This Account Before Used!";
-            header("location: Login/register.php");
+            header("location: Login/signup");
         } else {
             //Upload img
             //img type

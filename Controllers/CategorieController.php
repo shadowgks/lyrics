@@ -25,11 +25,11 @@ class CategorieController
             );
             $add = Categorie::add($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Added Categorie Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Added Categorie Failed';
                 header('location:dashboard');
                 die;
             }
@@ -50,11 +50,11 @@ class CategorieController
             );
             $add = Categorie::update($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Updated Categorie Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Updated Categorie Failed';
                 header('location:dashboard');
                 die;
             }
@@ -66,11 +66,11 @@ class CategorieController
     {
         $add = Categorie::delete($_POST['id']);
         if ($add === true) {
-            $_SESSION['Success'] = '';
+            $_SESSION['Success'] = 'Deleted Categorie Success';
             header('location:dashboard');
             die;
         } else {
-            $_SESSION['Failed'] = '';
+            $_SESSION['Failed'] = 'Deleted Categorie Failed Because in The Table Songs!';
             header('location:dashboard');
             die;
         }

@@ -30,11 +30,11 @@ class AlbumController
             );
             $add = Album::add($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Added album Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Added album Failed';
                 header('location:dashboard');
                 die;
             }
@@ -55,11 +55,11 @@ class AlbumController
             );
             $add = Album::update($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Update album Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Update album Failed';
                 header('location:dashboard');
                 die;
             }
@@ -71,11 +71,11 @@ class AlbumController
     {
         $add = Album::delete($_POST['id']);
         if ($add === true) {
-            $_SESSION['Success'] = '';
+            $_SESSION['Success'] = 'Deleted Album Success';
             header('location:dashboard');
             die;
         } else {
-            $_SESSION['Failed'] = '';
+            $_SESSION['Failed'] = 'Deleted Album Failed Because in The Table Songs!';
             header('location:dashboard');
             die;
         }

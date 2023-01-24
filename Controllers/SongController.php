@@ -41,11 +41,11 @@ class SongController{
             );
             $add = Song::add($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Added Song Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Added Song Failed';
                 header('location:dashboard');
                 die;
             }
@@ -72,11 +72,11 @@ class SongController{
             );
             $add = Song::update($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Updated Song Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Updated Song Failed';
                 header('location:dashboard');
                 die;
             }
@@ -88,11 +88,11 @@ class SongController{
     {
         $add = Song::delete($_POST['id']);
         if ($add === true) {
-            $_SESSION['Success'] = '';
+            $_SESSION['Success'] = 'Deleted Song Success';
             header('location:dashboard');
             die;
         } else {
-            $_SESSION['Failed'] = '';
+            $_SESSION['Failed'] = 'Deleted Song Failed Because in The Table Songs!';
             header('location:dashboard');
             die;
         }

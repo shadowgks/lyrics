@@ -30,11 +30,11 @@ class ArtistController
             );
             $add = Artist::add($data);
             if ($add === true) {
-                $_SESSION['Success'] = 'ok';
+                $_SESSION['Success'] = 'Added Artist Success';
                 header('location: dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Added Artist Failed';
                 header('location: dashboard');
                 die;
             }
@@ -57,11 +57,11 @@ class ArtistController
             );
             $add = Artist::update($data);
             if ($add === true) {
-                $_SESSION['Success'] = '';
+                $_SESSION['Success'] = 'Updated Artist Success';
                 header('location:dashboard');
                 die;
             } else {
-                $_SESSION['Failed'] = '';
+                $_SESSION['Failed'] = 'Updated Artist Failed';
                 header('location:dashboard');
                 die;
             }
@@ -73,11 +73,11 @@ class ArtistController
     {
         $add = Artist::delete($_POST['id']);
         if ($add === true) {
-            $_SESSION['Success'] = '';
+            $_SESSION['Success'] = 'Deleted Artist Success';
             header('location:dashboard');
             die;
         } else {
-            $_SESSION['Failed'] = '';
+            $_SESSION['Failed'] = 'Deleted Artist Failed Because in The Table Songs!';
             header('location:dashboard');
             die;
         }
