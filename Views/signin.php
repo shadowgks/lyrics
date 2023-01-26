@@ -94,7 +94,20 @@ if (isset($_SESSION['Admin'])) {
                 <strong>Failed!</strong>
 
             </div>
+
+
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <!-- begin alert parsley -->
+                <div class="p-6 alert-failed bg-red-600 text-white hidden">
+                    <h4 class="text-2xl">Oh snap!</h4>
+                    <p>This form seems to be invalid</p>
+                </div>
+                <div class="p-6 alert-success bg-green-600 text-white hidden">
+                    <h4 class="text-2xl">Yay!</h4>
+                    <p>Everything seems to be ok</p>
+                </div>
+                <!-- end alert parsley -->
+
                 <!-- BEGIN alert Failed -->
                 <?php if (isset($_SESSION['Failed'])) : ?>
                     <div id="alert-border-2" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
@@ -141,7 +154,7 @@ if (isset($_SESSION['Admin'])) {
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in to your account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" method="post" data-parsley-validate>
+                    <form class="space-y-4 md:space-y-6" id="signin" method="post" data-parsley-validate>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
@@ -154,7 +167,7 @@ if (isset($_SESSION['Admin'])) {
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                    <input id="orange-checkbox" type="checkbox" value="" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
+                                    <input id="orange-checkbox" type="checkbox" value="" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 </div>
                                 <div class="ml-3 text-sm">
                                     <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
@@ -273,9 +286,22 @@ if (isset($_SESSION['Admin'])) {
     <script src="public\assets\js\parsley.min.js"></script>
     <!-- END parsley js-->
     <!-- ================================ -->
+    <script type="text/javascript">
+        $(function() {
+            $('#signin').parsley().on('field:validated', function() {
+                    var ok = $('.parsley-error').length === 0;
+                    $('.alert-success').toggleClass('hidden', !ok);
+                    $('.alert-failed').toggleClass('hidden', ok);
+                })
+                .on('form:submit', function() {
+                    return true; // Don't submit form for this demo
+                });
+        });
+    </script>
     <!-- Begin file js -->
     <script src="public/assets/js/script.js"></script>
     <!-- End file js -->
+
 </body>
 
 </html>
